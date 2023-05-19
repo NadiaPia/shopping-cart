@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ShopContext } from '../context/shop-context';
-import axios from "axios"
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 function AddProduct(props) {
@@ -35,16 +36,21 @@ function AddProduct(props) {
         )
     
     */
+    //const navigate = useNavigate();
+    const [imageSelected, setImageSelected] = useState();
+    const [title, setTitle] = useState("");
+    const [price, setPrice] = useState(null);
 
-    const [imageSelected, setImageSelected] = useState()
+
     
 
     useEffect(() => {
-        if(!props.url) return; //if don't use this condition, the value of url will be set up equal "" right away after 
+        if (!props.url) return; //if don't use this condition, the value of url will be set up equal "" right away after 
         //render the page, because the statement (const [url, setUrl] = useState('') ) It will trigger useEffect and sending 
         //post request to the server with the image: ""; So, we need prevent the setting up the url="" initially
-        axios.post("http://localhost:3001/products", { image: props.url }).then((response) => {
-            console.log("response", response)
+        axios.post("http://localhost:3001/products", { imageUrl: props.url, title: title, price: price}).then((response) => {
+            console.log("response", response);
+            //navigate("/")
         });
     }, [props.url])
 
@@ -64,22 +70,29 @@ function AddProduct(props) {
         //make request to download and show in the page the image from the cloudinary.com
         //1. npm i cloudinary-react;
         //2. import { Image } from "cloudinary-react";
-    };    
+    };
 
     return (
-        <div>
-            <input
-                lang="en"
-                type="file"
+        <div className="newProduct">
 
-                onChange={(event) => {
-                    setImageSelected(event.target.files[0])
-                }}
-            />
-            <button onClick={uploadImage}> Upload Image </button>
+            <div className="newProductForm">
 
-            {/* <Image style={{width: 200}}cloudName="dhq7myqzj" publicId="https://res.cloudinary.com/dhq7myqzj/image/upload/v1683187661/htqrfkpze90gimskrk1b.jpg"/> */}
-            {/* <Image style={{width: 200}}cloudName="dhq7myqzj" publicId={url}/>*/}
+                <input
+                    lang="en"
+                    type="file"
+                    onChange={(event) => {
+                        setImageSelected(event.target.files[0])
+                    }}
+                />
+
+
+                <input type="text" placeholder='Title...' onChange={(event) => {setTitle(event.target.value)}}/>
+
+                <input type="text" placeholder='Price...' onChange={(event) => {setPrice(event.target.value)}}/>
+
+                <button onClick={uploadImage}> Upload Image </button>
+
+            </div>
         </div>
     );
 
@@ -93,4 +106,4 @@ function AddProduct(props) {
 
 
 
-export default AddProduct
+export default AddProduct;

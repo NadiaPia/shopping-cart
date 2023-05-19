@@ -12,9 +12,9 @@ function Shop() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/products").then((respose) => {
-      console.log("respose.data", respose.data);
-      setProducts(respose.data)      
+    axios.get("http://localhost:3001/products").then((response) => {
+      console.log("respose.data", response.data);
+      setProducts(response.data.reverse())
     })
   }, [])
   /*

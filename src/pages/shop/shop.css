@@ -30,6 +30,7 @@
 .product img {
   /*width: 300px;*/
   width: 25vw;
+  height: 33vh;
 }
 
 .product .description {
