@@ -40,6 +40,8 @@ function AddProduct(props) {
     const [imageSelected, setImageSelected] = useState();
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(null);
+    const [publicId, setPublicId] = useState("");
+
 
 
     
@@ -48,7 +50,7 @@ function AddProduct(props) {
         if (!props.url) return; //if don't use this condition, the value of url will be set up equal "" right away after 
         //render the page, because the statement (const [url, setUrl] = useState('') ) It will trigger useEffect and sending 
         //post request to the server with the image: ""; So, we need prevent the setting up the url="" initially
-        axios.post("http://localhost:3001/products", { imageUrl: props.url, title: title, price: price}).then((response) => {
+        axios.post("http://localhost:3001/products", { imageUrl: props.url, publicId: publicId, title: title, price: price}).then((response) => {
             console.log("response", response);
             //navigate("/")
         });
@@ -64,8 +66,13 @@ function AddProduct(props) {
 
         axios.post("https://api.cloudinary.com/v1_1/dhq7myqzj/image/upload", formData).then((response) => {
             console.log("response.data.url", response.data.url);
+            console.log("response.data", response.data);
+
             props.setUrl(response.data.url);
+            setPublicId(response.data.public_id)
         })
+
+        
 
         //make request to download and show in the page the image from the cloudinary.com
         //1. npm i cloudinary-react;

@@ -19,13 +19,20 @@
 
 .product {
   border-radius: 15px;
-  width: 300px;
+  width: 360px;
   height: 350px;  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: aqua;
 }
+/*
+.product .deleteProduct {
+  position: absolute;
+  bottom: 34%;
+}
+*/
 
 .product img {
   /*width: 300px;*/
