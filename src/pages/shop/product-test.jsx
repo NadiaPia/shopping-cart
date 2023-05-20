@@ -9,10 +9,9 @@ function ProductTest(props) {
   const cartItemAmount = cartItems[props.product.id]
 
   const deleteProduct = (id) => {
-    console.log("props.product.public_id*************************************", props.product.publicId)
+    console.log("props.product.public_id", props.product.publicId)
     axios.delete(`http://localhost:3001/products/${id}`, {headers: {publicId: props.product.publicId}}).then((response) => {
       console.log("response", response)
-
     });
   };
   
