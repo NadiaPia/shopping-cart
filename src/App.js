@@ -8,6 +8,7 @@ import ProductsTest from "./pages/products-test";
 
 import ShopContextProvider from "./context/shop-context";
 import React, { useState } from 'react';
+import Registration from "./pages/Registration";
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/new-product" element={<AddProduct setUrl={setUrl} url={url} />} />
             <Route path="/products-test" element={<ProductsTest />} />
+            <Route path="/registration" element={<Registration />} />
+
 
 
           </Routes>
