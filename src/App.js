@@ -9,6 +9,8 @@ import ProductsTest from "./pages/products-test";
 import ShopContextProvider from "./context/shop-context";
 import React, { useState } from 'react';
 import Registration from "./pages/Registration";
+import Login from "./pages/Login";
+
 
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
             <Route path="/new-product" element={<AddProduct setUrl={setUrl} url={url} />} />
             <Route path="/products-test" element={<ProductsTest />} />
             <Route path="/registration" element={<Registration />} />
+            <Route path="/login" element={<Login />} />
+
 
 
 
