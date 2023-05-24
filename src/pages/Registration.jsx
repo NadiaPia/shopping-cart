@@ -1,26 +1,35 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 
 
 function Registration() {
-
   
   const [usernameReg, setUsernameReg] = useState('');
   const [passwordReg, setPasswordReg] = useState('');
+  const navigate = useNavigate();
 
-  const register = axios.post("http://localhost:3001/register", {
+
+  const register = () => {axios.post("http://localhost:3001/auth", {
     username: usernameReg,
     password: passwordReg
   }).then((response) => {
-    console.log(response.data)
-  })
+    console.log(response.data);
+    setUsernameReg("");
+    setPasswordReg("");
+    navigate("/");
+  }).catch(error => {
+    console.log(error);
+});
+}
 
   return (
     <div className="registration">
             <h1>Registration</h1>
-            <input type="text" placeholder="Username" onChange={(e) => { setUsernameReg(e.target.value); }} />
-            <input type="text" placeholder="Password" onChange={(e) => { setPasswordReg(e.target.value); }} />
+            <input type="text" placeholder="Username" value={usernameReg} onChange={(e) => { setUsernameReg(e.target.value); }} />
+            <input type="text" placeholder="Password" value={passwordReg} onChange={(e) => { setPasswordReg(e.target.value); }} />
             
             {(usernameReg &&  passwordReg)? <button onClick={register}>Register</button> : <button disabled  onClick={register}>Register</button>}
         </div>
