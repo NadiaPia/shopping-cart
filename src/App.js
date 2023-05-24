@@ -16,6 +16,7 @@ import Login from "./pages/Login";
 function App() {
 
   const [url, setUrl] = useState('');
+  const [authState, setAuthState] = useState({ username: "", id: 0, status: false });
 
 
   return (
@@ -30,7 +31,7 @@ function App() {
             <Route path="/new-product" element={<AddProduct setUrl={setUrl} url={url} />} />
             <Route path="/products-test" element={<ProductsTest />} />
             <Route path="/registration" element={<Registration />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login authState={authState} setAuthState={setAuthState}/>} />
 
 
 
