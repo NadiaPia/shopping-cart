@@ -17,7 +17,7 @@ const getDefaultCart = () => {
 
 function ShopContextProvider(props) {
   const [cartItems, setCartItems] = useState(getDefaultCart);
-  console.log("cartItems", cartItems)
+  //console.log("cartItems", cartItems)
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;

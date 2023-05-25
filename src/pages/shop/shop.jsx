@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {PRODUCTS} from '../../products'
+//import {PRODUCTS} from '../../products'
 //import Product from './product';
 import ProductTest from './product-test';
 
@@ -13,7 +13,7 @@ function Shop() {
 
   useEffect(() => {
     axios.get("http://localhost:3001/products").then((response) => {
-      console.log("respose.data", response.data);
+      //console.log("respose.data", response.data);
       setProducts(response.data.reverse())
     })
   }, [])
