@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ShoppingCart } from "phosphor-react";
 import './navbar.css';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 
 function Navbar(props) {
@@ -11,7 +13,13 @@ function Navbar(props) {
 
 
   const logout = () => {
-    console.log("logout")
+    axios.get("http://localhost:3001/auth/logout").then((response) => {
+      //console.log("response.data after logout request", response.data.message);
+      if(response.data.message) {
+        props.setAuthState({ ...props.authState, status: false });
+        console.log("props.authState.status", props.authState.status)
+      }
+    })
   }
   return (
     <div className="navbar">

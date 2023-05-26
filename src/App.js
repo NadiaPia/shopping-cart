@@ -36,11 +36,7 @@ function App() {
       //navigate("/");
 
     }) 
-  }, [])
-  
-
-  
-
+  }, []);
 
   return (
     <div className="App">
@@ -55,10 +51,6 @@ function App() {
             <Route path="/products-test" element={<ProductsTest />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/login" element={<Login authState={authState} setAuthState={setAuthState}/>} />
-
-
-
-
           </Routes>
         </Router>
       </ShopContextProvider>
