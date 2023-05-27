@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import axios from "axios";
+import React, { useEffect } from 'react';
 import { Buffer } from 'buffer';
 
-
-function ProductsTest() {
-
-  const [allProducts, setAllProducts] = useState([])
+function ProductsTest(props) {
 
   useEffect(() => {
-    axios.get("http://localhost:3001/products").then((response) => {
-      setAllProducts(response.data)
-    })
+    props.getAllProducts()
   }, [])
-
 
   return (
     <div>
-      {allProducts.map((product) => {
+      {props.allProducts.map((product) => {
 
         let binary = Buffer.from(product.image); //or Buffer.from(data, 'binary')
         //let imgData = new Blob(binary.buffer, { type: 'application/octet-binary' });

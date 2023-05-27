@@ -7,7 +7,7 @@ import './shop.css';
 import axios from "axios";
 
 
-function Shop() {
+function Shop(props) {
 
   const [products, setProducts] = useState([]);
 
@@ -44,7 +44,7 @@ function Shop() {
 
       <div className='products'>
         {products.map((product) => (
-          <ProductTest key={product.id} product={product}/>
+          <ProductTest key={product.id} product={product} authState={props.authState}/>
         ))}
       </div>
     </div>

@@ -12,10 +12,6 @@ import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 //import { useNavigate } from "react-router-dom";
 
-
-
-
-
 function App() {
 
   //const navigate = useNavigate();
@@ -24,6 +20,15 @@ function App() {
   
   const [url, setUrl] = useState('');
   const [authState, setAuthState] = useState({ username: "", id: 0, status: false });
+  
+  const [allProducts, setAllProducts] = useState([]) //tests----------------------------------
+
+  const getAllProducts = () => {
+    axios.get("http://localhost:3001/products").then((response) => {
+    setAllProducts(response.data)
+  });
+
+  } 
   
   useEffect(() => {    
     axios.get("http://localhost:3001/auth/login").then((response) => {
@@ -45,10 +50,10 @@ function App() {
           <Navbar authState={authState} setAuthState={setAuthState}/>
 
           <Routes>
-            <Route path="/" element={<Shop />} />
+            <Route path="/" element={<Shop authState={authState}/>} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/new-product" element={<AddProduct setUrl={setUrl} url={url} />} />
-            <Route path="/products-test" element={<ProductsTest />} />
+            <Route path="/products-test" element={<ProductsTest allProducts={allProducts} setAllProducts={setAllProducts} getAllProducts={getAllProducts} />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="/login" element={<Login authState={authState} setAuthState={setAuthState}/>} />
           </Routes>
