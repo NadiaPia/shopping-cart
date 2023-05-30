@@ -2,9 +2,10 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Shop from "./pages/shop/shop";
-import Cart from "./pages/cart/cart";
+//import Cart from "./pages/cart/cart";
+import CartTest from "./pages/cart/cart-test";
 import AddProduct from "./pages/add-product"; 
-import ProductsTest from "./pages/products-test";
+//import ProductsTest from "./pages/products-test";
 import ShopContextProvider from "./context/shop-context";
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
@@ -21,14 +22,15 @@ function App() {
   const [url, setUrl] = useState('');
   const [authState, setAuthState] = useState({ username: "", id: 0, status: false });
   
-  const [allProducts, setAllProducts] = useState([]) //tests----------------------------------
+  const [products, setProducts] = useState([]);
 
-  const getAllProducts = () => {
+  useEffect(() => {
     axios.get("http://localhost:3001/products").then((response) => {
-    setAllProducts(response.data)
-  });
-
-  } 
+      //console.log("respose.data", response.data); //{id:4, imageUrl: "http://...", title:...}
+      setProducts(response.data.reverse())
+    })
+  }, [])
+  
   
   useEffect(() => {    
     axios.get("http://localhost:3001/auth/login").then((response) => {
@@ -50,10 +52,10 @@ function App() {
           <Navbar authState={authState} setAuthState={setAuthState}/>
 
           <Routes>
-            <Route path="/" element={<Shop authState={authState}/>} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/" element={<Shop authState={authState} products={products}/>} />
+            <Route path="/cart" element={<CartTest products={products}/>} />
             <Route path="/new-product" element={<AddProduct setUrl={setUrl} url={url} />} />
-            <Route path="/products-test" element={<ProductsTest allProducts={allProducts} setAllProducts={setAllProducts} getAllProducts={getAllProducts} />} />
+            {/*<Route path="/products-test" element={<ProductsTest allProducts={allProducts} setAllProducts={setAllProducts} getAllProducts={getAllProducts} />} />*/}
             <Route path="/registration" element={<Registration />} />
             <Route path="/login" element={<Login authState={authState} setAuthState={setAuthState}/>} />
           </Routes>

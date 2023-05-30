@@ -5,7 +5,10 @@ function ProductsTest(props) {
 
   useEffect(() => {
     props.getAllProducts()
+    console.log("props.getAllProducts", props.getAllProducts)
   }, [])
+
+
 
   return (
     <div>

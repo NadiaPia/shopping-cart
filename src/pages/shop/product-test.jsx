@@ -58,7 +58,7 @@ function ProductTest(props) {
         </p>       
       </div>
       <button className="addToCartBttn" onClick={() => addToCart(props.product.id)}>
-        Add To Cart {/*{cartItemAmount > 0 && <>({cartItemAmount})</>}*/} 
+        Add To Cart {quantity > 0 && <>({quantity})</>}
       </button>
       <button className='deleteProduct' onClick={() => deleteProduct(props.product.id)}>Delete</button>
     </div>

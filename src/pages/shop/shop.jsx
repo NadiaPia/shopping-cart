@@ -9,14 +9,7 @@ import axios from "axios";
 
 function Shop(props) {
 
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/products").then((response) => {
-      //console.log("respose.data", response.data);
-      setProducts(response.data.reverse())
-    })
-  }, [])
+  
   /*
   return (
     <div className='shop'>
@@ -43,7 +36,7 @@ function Shop(props) {
       </div>
 
       <div className='products'>
-        {products.map((product) => (
+        {props.products.map((product) => (
           <ProductTest key={product.id} product={product} authState={props.authState}/>
         ))}
       </div>
