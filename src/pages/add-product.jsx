@@ -64,8 +64,10 @@ function AddProduct(props) {
 
         //make request to upload an image to the cloudinary.com
 
-        axios.post("https://api.cloudinary.com/v1_1/dhq7myqzj/image/upload", formData).then((response) => {
-            console.log("response.data.url", response.data.url);
+        axios.post("https://api.cloudinary.com/v1_1/dhq7myqzj/image/upload", formData, {withCredentials: false }).then((response) => {
+          // by adding {withCredentials: false} we get rid off the all cookies that are sending by default according the 
+          //axios.defaults.withCredentials...because Cloudinary don't wait any extra info
+        console.log("response.data.url", response.data.url);
             console.log("response.data", response.data);
 
             props.setUrl(response.data.url);

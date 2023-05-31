@@ -8,7 +8,8 @@ import axios from "axios";
 
 function Shop(props) {
 
-  const [initialQuantity, setInitialQuantity] = useState(null)
+ 
+  const [initialQuantity, setInitialQuantity] = useState(null);
 
   useEffect(() => {
     axios.get(`http://localhost:3001/carts`).then((response) => {      
@@ -17,7 +18,7 @@ function Shop(props) {
       response.data.map((el) => {
         obj[el.ProductId] = el.quantity;
       })
-      console.log("obj", obj);
+      console.log("obj", obj); //{3:1, 4:3} means {el.ProductId: el.quantity}
       setInitialQuantity(obj)
       
     })

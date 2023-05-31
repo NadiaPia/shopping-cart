@@ -7,7 +7,7 @@ import axios from "axios";
 
 function ProductTest(props) {
 
-  const [quantity, setQuantity] = useState(props.initialQuantity[props.product.id] || 0);
+  const [quantity, setQuantity] = useState(props.initialQuantity[props.product.id] || 0); //quantity(product.id? || 0)
 
   const deleteProduct = (id) => {
     console.log("props.product.public_id", props.product.publicId)
@@ -32,7 +32,6 @@ function ProductTest(props) {
         console.log("response", response.data)
         setQuantity((prev) => prev + 1);
       }));
-
 
   };
   useEffect(() => {
