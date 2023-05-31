@@ -3,13 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  
 }
 
 .cartItem {
   width: 700px;
   height: 250px;
-  display: flex;
-
+  display: flex;  
   align-items: center;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   border-radius: 25px;
@@ -17,7 +18,8 @@
 }
 
 .cartItem img {
-  width: 200px;
+  width: 350px;
+  margin-left: 25px;
 }
 
 .cartItem .description {

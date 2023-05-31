@@ -4,7 +4,7 @@ import React from 'react';
 
 function CartProduct(props) {
     return (
-        <div>
+        <div >
             <div className='cartItem'>
                         <img src={props.cartProduct.Product.imageUrl} alt="pic" />
                         <div className='description'>
@@ -17,9 +17,7 @@ function CartProduct(props) {
 
                             <div className='countHandler'>
                                 <button > - </button>
-                                <input
-
-                                />
+                                <input value={props.cartProduct.quantity}     />
                                 <button > + </button>
 
                             </div>

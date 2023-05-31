@@ -20,7 +20,7 @@ function CartTest(props) {
 console.log(cartProducts)
   return (
     <div>
-      <div className='products'>
+      <div className='cart'>
         {cartProducts.map((cartProduct, i) => (
           <CartProduct key={`cartProduct.id-${i}`} cartProduct={cartProduct}/>
           // console.log(cartProduct)
