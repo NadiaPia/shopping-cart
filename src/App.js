@@ -11,6 +11,8 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+
 //import { useNavigate } from "react-router-dom";
 
 function App() {
@@ -67,6 +69,8 @@ function App() {
             {/*<Route path="/products-test" element={<ProductsTest allProducts={allProducts} setAllProducts={setAllProducts} getAllProducts={getAllProducts} />} />*/}
             <Route path="/registration" element={<Registration />} />
             <Route path="/login" element={<Login authState={authState} setAuthState={setAuthState} />} />
+            <Route path="/profile" element={<Profile />} />
+
           </Routes>
         </Router>
       </ShopContextProvider>
