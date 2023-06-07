@@ -1,14 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from "phosphor-react";
-
-
+import { MagnifyingGlass } from "phosphor-react";
 
 import Profile from "../pages/Profile";
 import Registration from "../pages/Registration";
-
-
-
 import './navbar.css';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -19,7 +15,6 @@ function Navbar(props) {
 
   const navigate = useNavigate();
   const username = props.authState.username;
-
 
   const logout = () => {
     axios.get("http://localhost:3001/auth/logout").then((response) => {
@@ -32,6 +27,19 @@ function Navbar(props) {
   };
   return (
     <div className="navbar">
+
+      <div className="boxContainer">
+        <table className="elementsContainer">
+          <tr>
+            <td>
+              <input type="text" placeholder='Search...' className="search" />
+            </td>
+            <td>
+              <a href="#" className="searchIcon"><MagnifyingGlass/></a>
+            </td>
+          </tr>
+        </table>
+      </div>
 
       <ul>
 
