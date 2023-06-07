@@ -69,7 +69,7 @@ function App() {
             {/*<Route path="/products-test" element={<ProductsTest allProducts={allProducts} setAllProducts={setAllProducts} getAllProducts={getAllProducts} />} />*/}
             <Route path="/registration" element={<Registration />} />
             <Route path="/login" element={<Login authState={authState} setAuthState={setAuthState} />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile setProducts={setProducts} />} />
 
           </Routes>
         </Router>

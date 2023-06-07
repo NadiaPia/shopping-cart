@@ -27,10 +27,7 @@ function Shop(props) {
 
   return (
     <div className='shop'>
-      <div className='shopTitle'>
-        <h1>
-          Nadia's shop
-        </h1>
+      <div className='shopTitle'>        
       </div>
 
       <div className='products'>

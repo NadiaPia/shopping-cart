@@ -8,14 +8,14 @@ import axios from "axios";
 function ProductTest(props) {
 
   const [quantity, setQuantity] = useState(props.initialQuantity[props.product.id] || 0); //quantity(product.id? || 0)
-
+/*
   const deleteProduct = (id) => {
     console.log("props.product.public_id", props.product.publicId)
     axios.delete(`http://localhost:3001/products/${id}`, { headers: { publicId: props.product.publicId } }).then((response) => {
       console.log("response", response)
     });
   };
-
+*/
   const addToCart = (id) => {
 
     //console.log("props.authState.id", props.authState.id)
@@ -54,7 +54,7 @@ function ProductTest(props) {
       <button className="addToCartBttn" onClick={() => addToCart(props.product.id)}>
         Add To Cart {quantity > 0 && <>({quantity})</>}
       </button>
-      <button className='deleteProduct' onClick={() => deleteProduct(props.product.id)}>Delete</button>
+      {/*<button className='deleteProduct' onClick={() => deleteProduct(props.product.id)}>Delete</button> */}
     </div>
   )
 }

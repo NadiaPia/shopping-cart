@@ -51,7 +51,7 @@ function AddProduct(props) {
         //render the page, because the statement (const [url, setUrl] = useState('') ) It will trigger useEffect and sending 
         //post request to the server with the image: ""; So, we need prevent the setting up the url="" initially
         axios.post("http://localhost:3001/products", { imageUrl: props.url, publicId: publicId, title: title, price: price}).then((response) => {
-            console.log("response", response);
+            console.log("response77777777777777777777777777", response);
             //navigate("/")
         });
     }, [props.url])
@@ -61,18 +61,31 @@ function AddProduct(props) {
         const formData = new FormData();
         formData.append("file", imageSelected);
         formData.append("upload_preset", "kysjntpy");
+        //console.log(formData.get('file'))
 
         //make request to upload an image to the cloudinary.com
+        
 
         axios.post("https://api.cloudinary.com/v1_1/dhq7myqzj/image/upload", formData, {withCredentials: false }).then((response) => {
           // by adding {withCredentials: false} we get rid off the all cookies that are sending by default according the 
           //axios.defaults.withCredentials...because Cloudinary don't wait any extra info
-        console.log("response.data.url", response.data.url);
+        
+          console.log("response.data.url", response.data.url);
             console.log("response.data", response.data);
+            //console.log("formData", formData)
 
             props.setUrl(response.data.url);
             setPublicId(response.data.public_id)
         })
+        
+
+        /*
+
+        axios.post("http://localhost:3001/products", {formData, title, price}).then((response) => {
+            console.log("ready")
+
+        })
+        */
 
         
 
@@ -108,10 +121,6 @@ function AddProduct(props) {
 
 
 }
-
-
-
-
 
 
 

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from "phosphor-react";
+
+
+
 import Profile from "../pages/Profile";
 import Registration from "../pages/Registration";
 

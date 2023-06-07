@@ -18,8 +18,9 @@
 }
 
 .cartItem img {
-  width: 350px;
+  width: 200px;
   margin-left: 25px;
+  object-fit: scale-down;
 }
 
 .cartItem .description {
