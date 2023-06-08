@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from "phosphor-react";
 import { MagnifyingGlass } from "phosphor-react";
+import { X } from "phosphor-react";
+
 import './navbar.css';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -24,14 +26,7 @@ function Navbar(props) {
       }
     })
   };
-  /*
-    const filterItem = () => {
-      axios.get("http://localhost:3001/products/filter", {headers: {"searchItem": searchItem.toLowerCase()}} ).then((response) => {
-        console.log(response.data)
-      })
-  
-    }
-    */
+   
 
   return (
     <div className="navbar">
@@ -41,9 +36,16 @@ function Navbar(props) {
           <tbody>
             <tr>
               <td>
-                <input type="text" placeholder='Search...' className="search" onChange={(event) => { props.setSearchItem(event.target.value) }} />
+                <input 
+                type="text" 
+                placeholder='Search...' 
+                className="search" 
+                onChange={(event) => { props.setSearchItem(event.target.value) }} 
+                value={props.searchItem}/>
               </td>
-              <td>
+              
+              <td className='td'>
+                {props.searchItem && <div className="searchIcon" > <X onClick={props.clearSearchBar}/> </div>}
                 <div className="searchIcon" onClick={props.filterItem}><MagnifyingGlass /></div>
               </td>
             </tr>

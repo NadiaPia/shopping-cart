@@ -33,3 +33,19 @@ body {
   margin: 10px;
 }
 
+.notFound {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;  
+  margin-top: 10%;
+  
+  
+  
+}
+
+.notFound h1 {
+  margin-left: 20px;
+  
+}
+

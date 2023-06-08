@@ -85,12 +85,14 @@ ul li:hover ul.dropdown {
   padding: 0px 10px;
   background-color: #FFF;
   border-radius: 10px;  
+  
 }
 
 .elementsContainer {
   width: 100%;
   height: 100%;  
   vertical-align: middle;
+  
 }
 
 .search {
@@ -101,6 +103,7 @@ ul li:hover ul.dropdown {
   border-radius: 10px;
   font-size: 18px;
   color: #424242;
+  
 }
 
 .search:focus {
@@ -110,7 +113,13 @@ ul li:hover ul.dropdown {
 .searchIcon {
  font-size: 25px;
  color: #424242;
+ margin-left: 4px;
+ margin-top: 4px;
 
+}
+.td {  
+  display: flex;
+  flex-direction: row;  
 }
 
 
