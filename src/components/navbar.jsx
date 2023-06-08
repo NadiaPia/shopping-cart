@@ -1,10 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from "phosphor-react";
 import { MagnifyingGlass } from "phosphor-react";
-
-import Profile from "../pages/Profile";
-import Registration from "../pages/Registration";
 import './navbar.css';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -13,8 +10,10 @@ import axios from "axios";
 
 function Navbar(props) {
 
+  //const [searchItem, setSearchItem] = useState("")
   const navigate = useNavigate();
   const username = props.authState.username;
+
 
   const logout = () => {
     axios.get("http://localhost:3001/auth/logout").then((response) => {
@@ -25,19 +24,30 @@ function Navbar(props) {
       }
     })
   };
+  /*
+    const filterItem = () => {
+      axios.get("http://localhost:3001/products/filter", {headers: {"searchItem": searchItem.toLowerCase()}} ).then((response) => {
+        console.log(response.data)
+      })
+  
+    }
+    */
+
   return (
     <div className="navbar">
 
       <div className="boxContainer">
         <table className="elementsContainer">
-          <tr>
-            <td>
-              <input type="text" placeholder='Search...' className="search" />
-            </td>
-            <td>
-              <a href="#" className="searchIcon"><MagnifyingGlass/></a>
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>
+                <input type="text" placeholder='Search...' className="search" onChange={(event) => { props.setSearchItem(event.target.value) }} />
+              </td>
+              <td>
+                <div className="searchIcon" onClick={props.filterItem}><MagnifyingGlass /></div>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
 
@@ -48,9 +58,9 @@ function Navbar(props) {
           <div className="loggedInContainer">
             <h2 className="menuItem"> {username ? `Hello, ${username}` : ""} </h2>
           </div>
-          
+
           <ul className="dropdown">
-            <li ><Link className="menuItem" to="/profile"> Profile </Link></li>            
+            <li ><Link className="menuItem" to="/profile"> Profile </Link></li>
             {props.authState.status && <li className="menuItem" onClick={logout}>Logout</li>}
           </ul>
 

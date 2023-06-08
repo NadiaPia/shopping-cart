@@ -23,6 +23,7 @@ function App() {
 
   const [url, setUrl] = useState('');
   const [authState, setAuthState] = useState({ username: "", id: 0, status: false });
+  const [searchItem, setSearchItem] = useState("")
 
   const [products, setProducts] = useState([]);
   
@@ -49,11 +50,20 @@ function App() {
     })
   }, []);
 
+  const filterItem = () => {
+    axios.get("http://localhost:3001/products/filter", {headers: {"searchItem": searchItem.toLowerCase()}} ).then((response) => {
+      console.log(response.data);
+      setProducts(response.data.reverse())
+
+    })
+
+  }
+
   return (
     <div className="App">
       <ShopContextProvider>
         <Router>
-          <Navbar authState={authState} setAuthState={setAuthState} />
+          <Navbar authState={authState} setAuthState={setAuthState} setSearchItem={setSearchItem} filterItem={filterItem}/>
 
           <Routes>
             <Route path="/" element={
