@@ -10,7 +10,7 @@ function Login(props) {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    axios.defaults.withCredentials = true; //!!!!!!!!!!!!!!!!!!!!!!!important it sets access-tokennn in the Application tab
+    //axios.defaults.withCredentials = true; //!!!!!!!!!!!!!!!!!!!!!!!important it sets access-tokennn in the Application tab
 
     // axios.get('/logout', { withCredentials: true })
     const login = () => {

@@ -34,7 +34,7 @@ function CartProduct(props) {
         <div >
             <div className='cartItem'>
                         <img src={props.cartProduct.Product.imageUrl} alt="pic" />
-                        <div className='description'>
+                        <div className='cartItemDescription'>
                             <p>
                                 <b>{props.cartProduct.Product.title}</b>
                             </p>
@@ -43,9 +43,9 @@ function CartProduct(props) {
                             </p>
 
                             <div className='countHandler'>
-                                <button onClick={() => changeQuantity(props.cartProduct.Product.id, -1)}> - </button>
+                                <button className='cartProductButton' onClick={() => changeQuantity(props.cartProduct.Product.id, -1)}> - </button>
                                 <input value={quantity} />
-                                <button onClick={() => changeQuantity(props.cartProduct.Product.id, 1)}> + </button>
+                                <button className='cartProductButton' onClick={() => changeQuantity(props.cartProduct.Product.id, 1)}> + </button>
 
                             </div>
                         </div>

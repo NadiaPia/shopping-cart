@@ -23,7 +23,7 @@ function Registration() {
 }
 
   return (
-    <div className="registration">
+    <div className="loginContainer">
             <h1>Registration</h1>
             <input type="text" placeholder="Username" value={usernameReg} onChange={(e) => { setUsernameReg(e.target.value); }} />
             <input type="text" placeholder="Password" value={passwordReg} onChange={(e) => { setPasswordReg(e.target.value); }} />
