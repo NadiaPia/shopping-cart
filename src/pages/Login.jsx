@@ -32,7 +32,7 @@ function Login(props) {
         <h1>Login</h1>
       <input type="text" placeholder="Username..." value={username} onChange={(event) => {setUsername(event.target.value)}}/>   
       <input type="password" placeholder="Password..." value={password} onChange={(event) => {setPassword(event.target.value)}}/>
-      <button onClick={login}>Login</button>
+      <button className="regAndLogButton" onClick={login}>Login</button>
 
     </div>
   )

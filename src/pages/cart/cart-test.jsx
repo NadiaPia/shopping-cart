@@ -8,7 +8,8 @@ import "./cart.css";
 
 function CartTest(props) {
 
-  const [cartProducts, setCartProducts] = useState([]);  
+  const [cartProducts, setCartProducts] = useState([]); 
+  const [subtotal, setSubtotal] = useState(0) 
 
   const getCartProducts = () => axios.get("http://localhost:3001/carts").then((response) => {
     console.log("response.data", response.data);   
@@ -24,10 +25,11 @@ console.log(cartProducts)
     <div>
       <div className='cart'>
         {cartProducts.map((cartProduct) => (
-          <CartProduct key={`cartProduct.id-${cartProduct.id}`} cartProduct={cartProduct} authState={props.authState} getCartProducts={getCartProducts}/>
+          <CartProduct key={`cartProduct.id-${cartProduct.id}`} setSubtotal={setSubtotal} cartProduct={cartProduct} authState={props.authState} getCartProducts={getCartProducts}/>
           // console.log(cartProduct)
         ))}
       </div>
+      <h1>Subtotal: {subtotal}</h1>
     </div>
   )
 }

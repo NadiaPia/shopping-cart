@@ -28,7 +28,7 @@ function Registration() {
             <input type="text" placeholder="Username" value={usernameReg} onChange={(e) => { setUsernameReg(e.target.value); }} />
             <input type="text" placeholder="Password" value={passwordReg} onChange={(e) => { setPasswordReg(e.target.value); }} />
             
-            {(usernameReg &&  passwordReg)? <button onClick={register}>Register</button> : <button disabled  onClick={register}>Register</button>}
+            {(usernameReg &&  passwordReg)? <button className="regAndLogButton" onClick={register}>Register</button> : <button className="regAndLogButton" disabled  onClick={register}>Register</button>}
         </div>
   )
 }

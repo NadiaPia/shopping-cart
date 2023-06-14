@@ -60,6 +60,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
 
 }
 
@@ -69,6 +70,6 @@
   
 }
 
-.cartItemDescription p, div {
+.cartItemDescription p, .cartItemDescription div {
   margin: 10px;
 }

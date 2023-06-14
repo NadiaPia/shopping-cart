@@ -15,20 +15,24 @@ function Profile(props) {
 
     const [profleProducts, setProfileProducts] = useState([]);
 
-
-
-    useEffect(() => {
+    const getAllProfileProducts = () => {
         axios.get("http://localhost:3001/profile").then((response) => {
             console.log("response.data", response.data)
             setProfileProducts(response.data)
 
         })
+
+    }
+
+    useEffect(() => {
+        getAllProfileProducts()
     }, [])
 
     const deleteProduct = (id, publicId) => {
         //console.log("props.product.public_id", item.publicId)
         axios.delete(`http://localhost:3001/products/${id}`, { headers: { publicId: publicId } }).then((response) => {
-            console.log("response", response)
+            console.log("response", response);
+            getAllProfileProducts();
         });
     };
 
@@ -38,8 +42,10 @@ function Profile(props) {
             <div className='products'>
 
                 <Link className="product" to="/new-product">
-                    <p className='profileProduct'>Add New</p>
-                    <p className='profileProduct'><PlusCircle size={42} /></p>
+                    <div className='profileProduct'>
+                    <p >Add New</p>
+                    <p ><PlusCircle size={42} /></p>
+                    </div>
                 </Link>
 
                 {profleProducts.map((item) => {
@@ -57,7 +63,8 @@ function Profile(props) {
                                         <b>${item.price}</b>
                                     </p>
                                 </div>
-                                <button className='deleteProduct' onClick={() => deleteProduct(item.id, item.publicId)}>Delete</button>
+                                <button className='deleteProductButton' onClick={() => deleteProduct(item.id, item.publicId)}>Delete</button>
+
                             </div>
                         </div>)
                 })}

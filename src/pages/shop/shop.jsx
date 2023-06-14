@@ -12,6 +12,11 @@ function Shop(props) {
   const [initialQuantity, setInitialQuantity] = useState(null);
 
   useEffect(() => {
+    props.getAllProducts()
+  }, [])
+
+
+  useEffect(() => {
     axios.get(`http://localhost:3001/carts`).then((response) => {      
       //console.log("response.data", response.data);
       const obj = {};
@@ -21,6 +26,8 @@ function Shop(props) {
       console.log("obj", obj); //{3:1, 4:3} means {el.ProductId: el.quantity}
       setInitialQuantity(obj)
       
+    }).catch((err) => {
+      setInitialQuantity({}) //allows to render products for not authorized users
     })
 
   }, []) 

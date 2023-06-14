@@ -1,60 +1,14 @@
 .App {
   text-align: center;
-  
+  margin: 0;
 }
 
 body {
   margin: 0;
 }
 
-
-.newProduct {
-  display: flex;
-  justify-content: center;
-}
-
-.newProductForm {
-  
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  align-items: center;
-  padding-top: 50px;
-  
-}
-
-.newProductForm input {
-  height: 50px;
-  width: 60%;
-  margin: 10px;
-  padding-left: 15px;
-  border-radius: 8px;
-  
-}
-
-.newProductForm button {
-  width: 30%;
-  height: 30px;
-  margin: 10px;
-  border-radius: 8px;
-  background-color: rgb(19, 19, 19);
-  color: white;
-  width: 200px;
-  height: 50px;
-}
-
-.chooseFile {
-  border-radius: none;
- display: none;
-}
-
-.addPicture {
-  width: 8vw;
-}
-
-.addPicture:hover {
-  filter: invert(37%) sepia(9%) saturate(0%) hue-rotate(146deg) brightness(91%) contrast(88%);
-  /* https://codepen.io/sosuke/pen/Pjoqqp */
+#root {
+  margin: 0;
 }
 
 .notFound {
@@ -81,7 +35,7 @@ body {
   padding-top: 100px;
 }
 
-.loginContainer input, button {
+.loginContainer input, .regAndLogButton {
   width: 200px;
   height: 50px;
   border-radius: 8px;
@@ -89,11 +43,31 @@ body {
   margin: 10px;
 }
 
-.loginContainer  button {
+.loginContainer  .regAndLogButton {
   background-color: rgb(19, 19, 19);
   color: white;
 }
 
 .loginContainer input {
   border: 2px solid rgb(19, 19, 19)
+}
+
+.deleteProductButton {
+  background-color: transparent;
+  border: 2px solid rgb(19, 19, 19);
+  min-width: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 15px;
+
+}
+
+
+.deleteProductButton:hover {
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  border: 2px solid red;
 }

@@ -83,6 +83,7 @@ function App() {
             <Shop
               authState={authState}
               products={products}
+              getAllProducts={getAllProducts}
 
             />}
           />
@@ -94,9 +95,6 @@ function App() {
           <Route path="/login" element={<Login authState={authState} setAuthState={setAuthState} />} />
           <Route path="/profile" element={<Profile setProducts={setProducts} />} />
           <Route path="/not-found" element={<NoResultsFound />} />
-
-
-
 
         </Routes>
 

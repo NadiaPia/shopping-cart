@@ -1,0 +1,83 @@
+/*Add-product */
+
+.thumbnailPictureForm {
+    border-radius: 15px;
+    width: 260px;
+    height: 250px;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;  
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    text-decoration: none;
+    position: relative;
+  
+  }
+  
+  .thumbnailPicture {
+    width: 90%;
+    height: 90%;
+    object-fit: scale-down;  
+  }
+  
+  .addedPicture {  
+    position: absolute;
+    left:0;
+    top: 0;
+    width: 20%;  
+  }
+  
+  .addPicture {
+    position: absolute;
+    width: 8vw;
+  } 
+  
+  .addPicture:hover {
+    filter: invert(37%) sepia(9%) saturate(0%) hue-rotate(146deg) brightness(91%) contrast(88%);
+    /* https://codepen.io/sosuke/pen/Pjoqqp */
+  }
+  
+  
+.newProduct {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .newProductForm {    
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    padding-top: 50px;
+    
+  }
+  
+  .newProductForm input {
+    height: 50px;
+    width: 60%;
+    margin: 10px;
+    padding-left: 15px;
+    border-radius: 8px;    
+  }
+  
+  .newProductForm button {
+    width: 30%;
+    height: 30px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: rgb(19, 19, 19);
+    color: white;
+    width: 200px;
+    height: 50px;
+  }
+  
+  .chooseFile {
+    border-radius: none;
+   display: none;
+  }
+  
+  
+  
+  
+  

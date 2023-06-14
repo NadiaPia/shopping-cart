@@ -3,50 +3,19 @@ import { ShopContext } from '../context/shop-context';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import addImg from "../assets/add_img.png";
+import './add-product.css';
+
 
 
 function AddProduct(props) {
 
     const inputFile = useRef(null);
-    /*
-        const loadFile = (e) => {
-            const fileToLoad = e.target.files[0];
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                console.log("eeeee", e.currentTarget.result)
-                axios.post("http://localhost:3001/products", {image: e.currentTarget.result}).then((response) => {
-                    console.log("response", response)
-                });
-            };
-            reader.readAsDataURL(fileToLoad);
-        }
-        const inputFile = useRef(null);
-       
-        return (
-            <div>
-    
-                <input
-                    onChange={loadFile}
-                    type='file'
-                    id='fileDialog'
-                    ref={inputFile}
-                    style={{ display: 'none' }}
-                />
-    
-                <button onClick={() => inputFile.current.click()}>Add Product</button>
-                
-            </div>
-        )
-    
-    */
-    //const navigate = useNavigate();
+
+    const navigate = useNavigate();
     const [imageSelected, setImageSelected] = useState();
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(null);
     const [publicId, setPublicId] = useState("");
-
-
-
 
 
     useEffect(() => {
@@ -55,7 +24,10 @@ function AddProduct(props) {
         //post request to the server with the image: ""; So, we need prevent the setting up the url="" initially
         axios.post("http://localhost:3001/products", { imageUrl: props.url, publicId: publicId, title: title, price: price }).then((response) => {
             console.log("response77777777777777777777777777", response);
-            //navigate("/")
+            navigate("/profile")
+
+        }).catch(error => {
+            console.log("errorrrrrr", error)
         });
     }, [props.url])
 
@@ -64,10 +36,10 @@ function AddProduct(props) {
         const formData = new FormData();
         formData.append("file", imageSelected);
         formData.append("upload_preset", "kysjntpy");
+
         //console.log(formData.get('file'))
 
         //make request to upload an image to the cloudinary.com
-
 
         axios.post("https://api.cloudinary.com/v1_1/dhq7myqzj/image/upload", formData, { withCredentials: false }).then((response) => {
             // by adding {withCredentials: false} we get rid off the all cookies that are sending by default according the 
@@ -76,9 +48,9 @@ function AddProduct(props) {
             console.log("response.data.url", response.data.url);
             console.log("response.data", response.data);
             //console.log("formData", formData)
-
             props.setUrl(response.data.url);
             setPublicId(response.data.public_id)
+
         })
 
         //make request to download and show in the page the image from the cloudinary.com
@@ -91,20 +63,31 @@ function AddProduct(props) {
 
             <div className="newProductForm">
 
-                <img 
-                    className='addPicture'
-                    onClick={()=>inputFile.current.click()}
-                    src={addImg}
-                    alt='add pictur'
-                />
+                <div className="thumbnailPictureForm">
+
+                    <img
+                        className={imageSelected ? 'addedPicture' : 'addPicture'}
+                        onClick={() => inputFile.current.click()}
+                        src={addImg}
+                        alt='add pictur'
+                    />
+                    {imageSelected && <img
+                        className='thumbnailPicture'
+                        alt='added pictur'
+                        src={URL.createObjectURL(imageSelected)}
+                    // src={ URL.createObjectURL(new Blob([Buffer.from(imageSelected).buffer]))}
+                    />}
+
+                </div>
 
                 <input
-                    className="chooseFile"                                        
+                    className="chooseFile"
                     lang="en"
                     type="file"
                     ref={inputFile}
                     onChange={(event) => {
-                        setImageSelected(event.target.files[0])
+                        setImageSelected(event.target.files[0]);
+
                     }}
                 />
 
