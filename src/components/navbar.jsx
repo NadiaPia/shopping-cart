@@ -80,7 +80,12 @@ function Navbar(props) {
         ) : (
           <>
             <Link className="navbarButton" to="/"> Shop </Link>
-            <Link className="navbarButton" to="/cart"> <ShoppingCart size={32} /> </Link>
+
+            <div className="shoppingCartImage">
+            <Link className="shoppingCartIcon" to="/cart"> <ShoppingCart size={32} /> </Link>
+            {props.cartQuantity && <p className="shoppingCartQuantity">{props.cartQuantity}</p>}
+            </div>         
+
           </>
 
         )}

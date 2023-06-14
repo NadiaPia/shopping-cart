@@ -6,31 +6,13 @@ import ProductTest from './product-test';
 import './shop.css';
 import axios from "axios";
 
-function Shop(props) {
-
- 
-  const [initialQuantity, setInitialQuantity] = useState(null);
+function Shop(props) {  
 
   useEffect(() => {
     props.getAllProducts()
   }, [])
 
-
-  useEffect(() => {
-    axios.get(`http://localhost:3001/carts`).then((response) => {      
-      //console.log("response.data", response.data);
-      const obj = {};
-      response.data.map((el) => {
-        obj[el.ProductId] = el.quantity;
-      })
-      console.log("obj", obj); //{3:1, 4:3} means {el.ProductId: el.quantity}
-      setInitialQuantity(obj)
-      
-    }).catch((err) => {
-      setInitialQuantity({}) //allows to render products for not authorized users
-    })
-
-  }, []) 
+  
 
   return (
     <div className='shop'>
@@ -38,30 +20,18 @@ function Shop(props) {
       </div>
 
       <div className='products'>
-        {initialQuantity && props.products.map((product) => (//product will be render inside the ProductTest component only after initialQuantity set up 
-          <ProductTest key={product.id} product={product} authState={props.authState} initialQuantity={initialQuantity}/>
+        {props.initialQuantity && props.products.map((product) => (//product will be render inside the ProductTest component only after initialQuantity set up 
+          <ProductTest 
+          key={product.id} 
+          product={product} 
+          authState={props.authState} 
+          initialQuantity={props.initialQuantity}
+          setCartQuantity={props.setCartQuantity}
+          />
         ))}
       </div>
     </div>
   )
 }
-
-
-  /*
-  return (
-    <div className='shop'>
-      <div className='shopTitle'>
-        <h1>
-          Nadia's shop
-        </h1>
-      </div>
-
-      <div className='products'>
-        {PRODUCTS.map((product) => (
-          <Product key={product.id} data={product}/>
-        ))}
-      </div>
-    </div>
-  )*/
 
 export default Shop;

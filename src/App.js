@@ -26,6 +26,8 @@ function App() {
   const [authState, setAuthState] = useState({ username: "", id: 0, status: false });
   const [searchItem, setSearchItem] = useState("");
   const [products, setProducts] = useState([]);
+  const [cartQuantity, setCartQuantity] = useState(0);
+  const [initialQuantity, setInitialQuantity] = useState(null);
 
 
   const getAllProducts = () => axios.get("http://localhost:3001/products").then((response) => {
@@ -52,6 +54,27 @@ function App() {
     })
   }, []);
 
+  useEffect(() => {
+    axios.get(`http://localhost:3001/carts`).then((response) => {      
+      console.log("response.data", response.data);
+      let totalQuantity = 0;
+      const obj = {};
+      response.data.map((el) => {        
+        obj[el.ProductId] = el.quantity;
+        totalQuantity += el.quantity
+      })
+      console.log("obj", obj); //{3:1, 4:3} means {el.ProductId: el.quantity}
+      console.log("totalQuantity", totalQuantity)
+
+      setInitialQuantity(obj);
+      setCartQuantity(totalQuantity)
+      
+    }).catch((err) => {
+      setInitialQuantity({}) //allows to render products for not authorized users
+    })
+
+  }, []) 
+
   const filterItem = () => {
     axios.get("http://localhost:3001/products/filter", { headers: { "searchItem": searchItem.toLowerCase() } }).then((response) => {
       console.log("response.dataaa", response.data.length);
@@ -76,7 +99,15 @@ function App() {
     <div className="App">
       <ShopContextProvider>
 
-        <Navbar authState={authState} setAuthState={setAuthState} searchItem={searchItem} setSearchItem={setSearchItem} filterItem={filterItem} clearSearchBar={clearSearchBar} />
+        <Navbar 
+        authState={authState} 
+        setAuthState={setAuthState} 
+        searchItem={searchItem} 
+        setSearchItem={setSearchItem} 
+        filterItem={filterItem} 
+        clearSearchBar={clearSearchBar}
+        cartQuantity={cartQuantity}
+         />
 
         <Routes>
           <Route path="/" element={
@@ -84,6 +115,9 @@ function App() {
               authState={authState}
               products={products}
               getAllProducts={getAllProducts}
+              setInitialQuantity={setInitialQuantity}
+              initialQuantity={initialQuantity}
+              setCartQuantity={setCartQuantity}
 
             />}
           />

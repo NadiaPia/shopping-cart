@@ -25,12 +25,14 @@ function ProductTest(props) {
         //console.log("Add to cart button is clicked once")
         console.log("response", response.data)
         setQuantity((prev) => prev + 1);
+        props.setCartQuantity((prev) => prev + 1);
       })
     ) : (
       axios.put(`http://localhost:3001/carts/${id}`, { userId: props.authState.id, quantity: quantity + 1 }).then((response) => {
         console.log("Add to cart button is clicked more then once");
         console.log("response", response.data)
         setQuantity((prev) => prev + 1);
+        props.setCartQuantity((prev) => prev + 1);
       }));
 
   };
