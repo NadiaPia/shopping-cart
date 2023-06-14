@@ -40,7 +40,7 @@
   justify-content: center;
 }
 
-.checkout button {
+.ShopAndCheckout {
   width: 150px;
   height: 50px;
   background-color: rgb(19, 19, 19);
@@ -61,15 +61,16 @@
   justify-content: center;
   align-items: center;
   border: none;
-
 }
 
 .cartItemDescription {
   font-size: 1.5vw;
-  width: 70%;  
-  
+  width: 70%;    
 }
 
 .cartItemDescription p, .cartItemDescription div {
   margin: 10px;
 }
+
+
+

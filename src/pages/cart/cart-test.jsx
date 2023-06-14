@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import CartProduct from "./cart-product";
 import "./cart.css";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -9,7 +10,8 @@ import "./cart.css";
 function CartTest(props) {
 
   const [cartProducts, setCartProducts] = useState([]); 
-  const [subtotal, setSubtotal] = useState(0) 
+  const [subtotal, setSubtotal] = useState(0);
+  const navigate = useNavigate();
 
   const getCartProducts = () => axios.get("http://localhost:3001/carts").then((response) => {
     console.log("response.data", response.data);   
@@ -30,6 +32,11 @@ console.log(cartProducts)
         ))}
       </div>
       <h1>Subtotal: {subtotal}</h1>
+      <div className="cartButtons">
+        <button className="ShopAndCheckout" onClick={() => navigate("/")}>Continue Shopping</button>
+        <button className="ShopAndCheckout">Checkout</button>
+
+      </div>
     </div>
   )
 }
