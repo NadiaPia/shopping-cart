@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
-//import {PRODUCTS} from '../../products'
-//import Product from './product';
 import ProductTest from './product-test';
-
 import './shop.css';
 import axios from "axios";
 
 function Shop(props) {  
 
   useEffect(() => {
-    props.getAllProducts()
-  }, [])
+    props.getAllProducts()  }, [])
 
   
 

@@ -27,7 +27,14 @@ console.log(cartProducts)
     <div>
       <div className='cart'>
         {cartProducts.map((cartProduct) => (
-          <CartProduct key={`cartProduct.id-${cartProduct.id}`} setSubtotal={setSubtotal} cartProduct={cartProduct} authState={props.authState} getCartProducts={getCartProducts}/>
+          <CartProduct
+           key={`cartProduct.id-${cartProduct.id}`} 
+           setSubtotal={setSubtotal} 
+           cartProduct={cartProduct} 
+           authState={props.authState} 
+           getCartProducts={getCartProducts}
+           setCartQuantity={props.setCartQuantity}
+           />
           // console.log(cartProduct)
         ))}
       </div>

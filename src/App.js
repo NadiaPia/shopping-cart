@@ -48,18 +48,21 @@ function App() {
     }).catch((err) => {
       //console.log(err)
       setAuthState({ ...authState, status: false });
-      
+
       navigate("/");
 
     })
   }, []);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/carts`).then((response) => {      
+    if(!authState.status) {
+      return
+    }
+    axios.get(`http://localhost:3001/carts`).then((response) => {
       console.log("response.data", response.data);
       let totalQuantity = 0;
       const obj = {};
-      response.data.map((el) => {        
+      response.data.map((el) => {
         obj[el.ProductId] = el.quantity;
         totalQuantity += el.quantity
       })
@@ -68,12 +71,12 @@ function App() {
 
       setInitialQuantity(obj);
       setCartQuantity(totalQuantity)
-      
+
     }).catch((err) => {
       setInitialQuantity({}) //allows to render products for not authorized users
     })
 
-  }, []) 
+  }, [authState.status])
 
   const filterItem = () => {
     axios.get("http://localhost:3001/products/filter", { headers: { "searchItem": searchItem.toLowerCase() } }).then((response) => {
@@ -89,7 +92,7 @@ function App() {
 
   const clearSearchBar = () => {
     setSearchItem("");
-    if(window.location.pathname === "/") {
+    if (window.location.pathname === "/") {
       getAllProducts();
     }
     navigate("/");
@@ -99,15 +102,17 @@ function App() {
     <div className="App">
       <ShopContextProvider>
 
-        <Navbar 
-        authState={authState} 
-        setAuthState={setAuthState} 
-        searchItem={searchItem} 
-        setSearchItem={setSearchItem} 
-        filterItem={filterItem} 
-        clearSearchBar={clearSearchBar}
-        cartQuantity={cartQuantity}
-         />
+        <Navbar
+          authState={authState}
+          setAuthState={setAuthState}
+          searchItem={searchItem}
+          setSearchItem={setSearchItem}
+          filterItem={filterItem}
+          clearSearchBar={clearSearchBar}
+          cartQuantity={cartQuantity}
+          setCartQuantity={setCartQuantity}
+          setInitialQuantity={setInitialQuantity}
+        />
 
         <Routes>
           <Route path="/" element={
@@ -122,7 +127,14 @@ function App() {
             />}
           />
 
-          <Route path="/cart" element={<CartTest products={products} authState={authState} />} />
+          <Route path="/cart" element={
+            <CartTest
+              products={products}
+              authState={authState}
+              setCartQuantity={setCartQuantity}
+            />}
+          />
+
           <Route path="/new-product" element={<AddProduct setUrl={setUrl} url={url} />} />
           {/*<Route path="/products-test" element={<ProductsTest allProducts={allProducts} setAllProducts={setAllProducts} getAllProducts={getAllProducts} />} />*/}
           <Route path="/registration" element={<Registration />} />

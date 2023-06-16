@@ -16,6 +16,10 @@ function ProductTest(props) {
     });
   };
 */
+useEffect(() => {
+  setQuantity(props.initialQuantity[props.product.id] || 0)
+}, [props.initialQuantity[props.product.id]]);
+
   const addToCart = (id) => {
 
     //console.log("props.authState.id", props.authState.id)

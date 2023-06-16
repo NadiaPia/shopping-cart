@@ -20,8 +20,11 @@ function Navbar(props) {
     axios.get("http://localhost:3001/auth/logout").then((response) => {
       //console.log("response.data after logout request", response.data.message);
       if (response.data.message) {
-        props.setAuthState({ username: "", id: 0, status: false });       
+        props.setAuthState({ username: "", id: 0, status: false });
+
         console.log("props.authState.status", props.authState.status);
+        props.setInitialQuantity({});
+        props.setCartQuantity(0);
         navigate("/")
       }
     })
