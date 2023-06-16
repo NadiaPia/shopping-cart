@@ -76,6 +76,19 @@
     border-radius: none;
    display: none;
   }
+
+
+  .status-image {    
+    animation: rotate 1s linear infinite;
+    width: 15%;
+  }
+
+  @keyframes rotate {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
   
   
   

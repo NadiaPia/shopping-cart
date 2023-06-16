@@ -3,6 +3,7 @@ import { ShopContext } from '../context/shop-context';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import addImg from "../assets/add_img.png";
+import statusImg from "../assets/status.png";
 import './add-product.css';
 
 
@@ -16,6 +17,8 @@ function AddProduct(props) {
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(null);
     const [publicId, setPublicId] = useState("");
+    const [spin, setSpin] = useState(false);
+
 
 
     useEffect(() => {
@@ -24,6 +27,7 @@ function AddProduct(props) {
         //post request to the server with the image: ""; So, we need prevent the setting up the url="" initially
         axios.post("http://localhost:3001/products", { imageUrl: props.url, publicId: publicId, title: title, price: price }).then((response) => {
             console.log("response77777777777777777777777777", response);
+
             navigate("/profile")
 
         }).catch(error => {
@@ -36,6 +40,8 @@ function AddProduct(props) {
         const formData = new FormData();
         formData.append("file", imageSelected);
         formData.append("upload_preset", "kysjntpy");
+
+        setSpin(true)
 
         //console.log(formData.get('file'))
 
@@ -50,6 +56,7 @@ function AddProduct(props) {
             //console.log("formData", formData)
             props.setUrl(response.data.url);
             setPublicId(response.data.public_id)
+            
 
         })
 
@@ -95,14 +102,19 @@ function AddProduct(props) {
 
                 <input type="text" placeholder='Price...' onChange={(event) => { setPrice(event.target.value) }} />
 
-                <button onClick={uploadImage}> Upload Image </button>
+                <button onClick={uploadImage}> 
+                                
+                 {spin ? <img
+                            className="status-image"
+                            src={statusImg}  //pay attention to this address!!!!!
+                            alt="Loading"
+                        /> : "Add Product"}
+                        
+                </button>
 
             </div>
         </div>
     );
-
-
-
 }
 
 
