@@ -137,7 +137,7 @@ function App() {
 
           <Route path="/new-product" element={<AddProduct setUrl={setUrl} url={url} />} />
           {/*<Route path="/products-test" element={<ProductsTest allProducts={allProducts} setAllProducts={setAllProducts} getAllProducts={getAllProducts} />} />*/}
-          <Route path="/registration" element={<Registration />} />
+          <Route path="/registration" element={<Registration authState={authState} setAuthState={setAuthState}/>} />
           <Route path="/login" element={<Login authState={authState} setAuthState={setAuthState} />} />
           <Route path="/profile" element={<Profile setProducts={setProducts} />} />
           <Route path="/not-found" element={<NoResultsFound />} />

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Registration() {
+function Registration(props) {
   
   const [usernameReg, setUsernameReg] = useState('');
   const [passwordReg, setPasswordReg] = useState('');
@@ -14,6 +14,8 @@ function Registration() {
     password: passwordReg
   }).then((response) => {
     console.log(response.data);
+    props.setAuthState({username: response.data.username, id: response.data.id, status: true});     
+
     setUsernameReg("");
     setPasswordReg("");
     navigate("/");

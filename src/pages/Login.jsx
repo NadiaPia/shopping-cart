@@ -19,7 +19,7 @@ function Login(props) {
                 alert(response.data.error)
             } else {
                 console.log("response.data after login request", response.data);
-                props.setAuthState({username: response.data.username, id: response.data.id, status: true});                
+                props.setAuthState({username: response.data.username, id: response.data.id, status: true});            
                 setUsername("");
                 setPassword("");
                 navigate("/");
