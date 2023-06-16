@@ -33,6 +33,7 @@ function Profile(props) {
         axios.delete(`http://localhost:3001/products/${id}`, { headers: { publicId: publicId } }).then((response) => {
             console.log("response", response);
             getAllProfileProducts();
+            props.refreshCurrentCart()
         });
     };
 

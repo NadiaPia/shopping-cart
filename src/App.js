@@ -35,6 +35,26 @@ function App() {
     setProducts(response.data.reverse())
   });
 
+  const refreshCurrentCart = () => {
+    axios.get(`http://localhost:3001/carts`).then((response) => {
+      console.log("response.data", response.data);
+      let totalQuantity = 0;
+      const obj = {};
+      response.data.map((el) => {
+        obj[el.ProductId] = el.quantity;
+        totalQuantity += el.quantity
+      })
+      console.log("obj", obj); //{3:1, 4:3} means {el.ProductId: el.quantity}
+      console.log("totalQuantity", totalQuantity)
+
+      setInitialQuantity(obj);
+      setCartQuantity(totalQuantity)
+
+    }).catch((err) => {
+      setInitialQuantity({}) //allows to render products for not authorized users
+    })
+  }
+
   useEffect(() => {
     getAllProducts()
   }, [])
@@ -58,23 +78,9 @@ function App() {
     if(!authState.status) {
       return
     }
-    axios.get(`http://localhost:3001/carts`).then((response) => {
-      console.log("response.data", response.data);
-      let totalQuantity = 0;
-      const obj = {};
-      response.data.map((el) => {
-        obj[el.ProductId] = el.quantity;
-        totalQuantity += el.quantity
-      })
-      console.log("obj", obj); //{3:1, 4:3} means {el.ProductId: el.quantity}
-      console.log("totalQuantity", totalQuantity)
 
-      setInitialQuantity(obj);
-      setCartQuantity(totalQuantity)
-
-    }).catch((err) => {
-      setInitialQuantity({}) //allows to render products for not authorized users
-    })
+    refreshCurrentCart()
+   
 
   }, [authState.status])
 
@@ -139,7 +145,7 @@ function App() {
           {/*<Route path="/products-test" element={<ProductsTest allProducts={allProducts} setAllProducts={setAllProducts} getAllProducts={getAllProducts} />} />*/}
           <Route path="/registration" element={<Registration authState={authState} setAuthState={setAuthState}/>} />
           <Route path="/login" element={<Login authState={authState} setAuthState={setAuthState} />} />
-          <Route path="/profile" element={<Profile setProducts={setProducts} />} />
+          <Route path="/profile" element={<Profile setProducts={setProducts} refreshCurrentCart={refreshCurrentCart}/>} />
           <Route path="/not-found" element={<NoResultsFound />} />
 
         </Routes>
