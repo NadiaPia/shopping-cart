@@ -3,6 +3,8 @@ import axios from 'axios';
 import './shop/shop.css';
 import { PlusCircle } from "phosphor-react";
 import { Link } from 'react-router-dom';
+import Dialog from "./Dialog";
+
 
 import { SelectionPlus } from "phosphor-react";
 
@@ -14,11 +16,13 @@ function Profile(props) {
 
 
     const [profleProducts, setProfileProducts] = useState([]);
+    const [dialog, setDialog] = useState({ message: "", isLoading: false, args: null })
 
     const getAllProfileProducts = () => {
         axios.get("http://localhost:3001/profile").then((response) => {
             console.log("response.data", response.data)
-            setProfileProducts(response.data)
+            setProfileProducts(response.data);
+            setDialog({ message: "", isLoading: false, args: null })
 
         })
 
@@ -33,7 +37,7 @@ function Profile(props) {
         axios.delete(`http://localhost:3001/products/${id}`, { headers: { publicId: publicId } }).then((response) => {
             console.log("response", response);
             getAllProfileProducts();
-            props.refreshCurrentCart()
+            props.refreshCurrentCart();
         });
     };
 
@@ -44,8 +48,8 @@ function Profile(props) {
 
                 <Link className="product" to="/new-product">
                     <div className='profileProduct'>
-                    <p >Add New</p>
-                    <p ><PlusCircle size={42} /></p>
+                        <p >Add New</p>
+                        <p ><PlusCircle size={42} /></p>
                     </div>
                 </Link>
 
@@ -64,13 +68,18 @@ function Profile(props) {
                                         <b>${item.price}</b>
                                     </p>
                                 </div>
-                                <button className='deleteProductButton' onClick={() => deleteProduct(item.id, item.publicId)}>Delete</button>
+                                <button className='deleteProductButton'
+                                    onClick={() => setDialog({ message: "Delete Product?", isLoading: true, args: { itemId: item.id, publicId: item.publicId } })}
+                                >
+                                    Delete
+                                </button>
 
                             </div>
                         </div>)
                 })}
 
             </div>
+            {dialog.isLoading && <Dialog message={dialog.message} setDialog={setDialog} onConfirm={() => deleteProduct(dialog.args.itemId, dialog.args.publicId)} />}
         </div>
     )
 }
