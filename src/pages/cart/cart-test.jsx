@@ -41,7 +41,7 @@ console.log(cartProducts)
       <h1>Subtotal: ${subtotal}</h1>
       <div className="cartButtons">
         <button className="ShopAndCheckout" onClick={() => navigate("/")}>Continue Shopping</button>
-        <button className="ShopAndCheckout">Checkout</button>
+        <button className="ShopAndCheckout" onClick={() => navigate("/payment")}>Checkout</button>
 
       </div>
     </div>

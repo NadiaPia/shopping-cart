@@ -13,6 +13,10 @@ import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import NoResultsFound from "./pages/NoResultsFound";
+import Payment from "./pages/Payment";
+import Completion from "./pages/Completion";
+
+
 
 import { useNavigate } from "react-router-dom";
 
@@ -147,6 +151,8 @@ function App() {
           <Route path="/login" element={<Login authState={authState} setAuthState={setAuthState} />} />
           <Route path="/profile" element={<Profile setProducts={setProducts} refreshCurrentCart={refreshCurrentCart}/>} />
           <Route path="/not-found" element={<NoResultsFound />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/completion" element={<Completion />} />
 
         </Routes>
 
