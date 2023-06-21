@@ -33,6 +33,13 @@ body {
   width: 100%;
   height: 100vh;
   padding-top: 100px;
+  /*background-color: aqua;*/
+}
+
+@media screen and (max-width: 624px) {
+  .loginContainer {
+    margin-top: 40px; 
+  }
 }
 
 .loginContainer input, .regAndLogButton {
@@ -49,7 +56,8 @@ body {
 }
 
 .loginContainer input {
-  border: 2px solid rgb(19, 19, 19)
+  border: 2px solid rgb(19, 19, 19);
+  padding-left: 10px;
 }
 
 .deleteProductButton {

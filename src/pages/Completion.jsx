@@ -1,5 +1,10 @@
+import './Payment.css';
+
 function Completion(props) {
-    return <h1>Thank you! 🎉</h1>;
+    return (
+      <div className="completionContainer">
+    <h1>Thank you! 🎉</h1>
+    </div>);
   }
   
   export default Completion;

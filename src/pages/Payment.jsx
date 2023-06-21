@@ -13,7 +13,7 @@ function Payment() {
 
   useEffect(() => {
     axios.get("http://localhost:3001/payment/config").then((r) => {
-        console.log("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr", r)
+        console.log("r", r)
     const { publishableKey } = r.data;
     console.log("publishableKeypublishableKey", publishableKey)
       

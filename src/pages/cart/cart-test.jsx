@@ -24,11 +24,11 @@ function CartTest(props) {
 
 console.log(cartProducts)
   return (
-    <div>
+    <div className="cartContainer">
       <div className='cart'>
         {cartProducts.map((cartProduct) => (
           <CartProduct
-           key={`cartProduct.id-${cartProduct.id}`} 
+           key={`cartProduct.id-${cartProduct.id}`}
            setSubtotal={setSubtotal} 
            cartProduct={cartProduct} 
            authState={props.authState} 
@@ -38,11 +38,13 @@ console.log(cartProducts)
           // console.log(cartProduct)
         ))}
       </div>
-      <h1>Subtotal: ${subtotal}</h1>
+      <div className="subtotalContainer">      
+      <p>Subtotal:<br/> $ {subtotal}</p>
       <div className="cartButtons">
         <button className="ShopAndCheckout" onClick={() => navigate("/")}>Continue Shopping</button>
         <button className="ShopAndCheckout" onClick={() => navigate("/payment")}>Checkout</button>
 
+      </div>
       </div>
     </div>
   )

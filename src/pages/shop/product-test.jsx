@@ -49,11 +49,11 @@ useEffect(() => {
     <div className="product" >
       <img alt="pic" src={props.product.imageUrl} />
 
-      <div >
-        <p>
+      <div className="productElementContainer">
+        <p className="productElement">
           <b>{props.product.title}</b>
         </p>
-        <p>
+        <p className="productElement">
           <b>${props.product.price}</b>
         </p>
       </div>

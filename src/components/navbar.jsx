@@ -49,13 +49,15 @@ function Navbar(props) {
 
         </div>        
       </div>
-
+      <div className="navbarStaff">
+          
+          
       {props.authState.status && (
 
-      <ul>
+        
 
+      <ul className="greeting">
         <li>
-
           <div className="loggedInContainer">
             <h2 className="menuItemLogin" > {username ? `Hello, ${username}` : ""} </h2>
           </div>
@@ -64,9 +66,7 @@ function Navbar(props) {
             <li ><Link className="menuItem" to="/profile"> Profile </Link></li>
             {props.authState.status && <li className="menuItem" onClick={logout}>Logout</li>}
           </ul>
-
         </li>
-
       </ul>
       )}
 
@@ -93,6 +93,7 @@ function Navbar(props) {
 
         )}
 
+      </div>
       </div>
     </div>
   )

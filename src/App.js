@@ -61,7 +61,17 @@ function App() {
 
   useEffect(() => {
     getAllProducts()
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    if (window.location.pathname === "/completion") {
+      axios.delete("http://localhost:3001/carts/clearCart").then((response) => {
+        setCartQuantity(0);        
+      }).catch((err) => {
+        console.log(err);
+      })
+    }
+  }, [window.location.pathname])
 
 
   useEffect(() => {
@@ -72,20 +82,15 @@ function App() {
     }).catch((err) => {
       //console.log(err)
       setAuthState({ ...authState, status: false });
-
       navigate("/");
-
     })
   }, []);
 
   useEffect(() => {
     if(!authState.status) {
-      return
-    }
-
-    refreshCurrentCart()
-   
-
+      return;
+    };
+    refreshCurrentCart();
   }, [authState.status])
 
   const filterItem = () => {
@@ -94,11 +99,11 @@ function App() {
       if (response.data.length < 1) {
         navigate("/not-found");
       } else {
-        setProducts(response.data.reverse())
+        setProducts(response.data.reverse());
         navigate("/");
-      }
-    })
-  }
+      };
+    });
+  };
 
   const clearSearchBar = () => {
     setSearchItem("");

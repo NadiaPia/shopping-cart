@@ -5,15 +5,7 @@ import { PlusCircle } from "phosphor-react";
 import { Link } from 'react-router-dom';
 import Dialog from "./Dialog";
 
-
-import { SelectionPlus } from "phosphor-react";
-
-
-
-
-
 function Profile(props) {
-
 
     const [profleProducts, setProfileProducts] = useState([]);
     const [dialog, setDialog] = useState({ message: "", isLoading: false, args: null })
@@ -22,15 +14,13 @@ function Profile(props) {
         axios.get("http://localhost:3001/profile").then((response) => {
             console.log("response.data", response.data)
             setProfileProducts(response.data);
-            setDialog({ message: "", isLoading: false, args: null })
-
+            setDialog({ message: "", isLoading: false, args: null });
         })
-
-    }
+    };
 
     useEffect(() => {
         getAllProfileProducts()
-    }, [])
+    }, []);
 
     const deleteProduct = (id, publicId) => {
         //console.log("props.product.public_id", item.publicId)
@@ -40,7 +30,6 @@ function Profile(props) {
             props.refreshCurrentCart();
         });
     };
-
 
     return (
         <div>
@@ -55,26 +44,26 @@ function Profile(props) {
 
                 {profleProducts.map((item) => {
                     return (
-
-
                         <div className='product' key={item.id}>
-                            <div>
-                                <img alt="pic" src={item.imageUrl} />
-                                <div >
-                                    <p>
-                                        <b>{item.title}</b>
-                                    </p>
-                                    <p>
-                                        <b>${item.price}</b>
-                                    </p>
-                                </div>
-                                <button className='deleteProductButton'
-                                    onClick={() => setDialog({ message: "Delete Product?", isLoading: true, args: { itemId: item.id, publicId: item.publicId } })}
-                                >
-                                    Delete
-                                </button>
-
+                            <img alt="pic" src={item.imageUrl} />
+                            <div className="productElementContainer" >
+                                <p className="productElement">
+                                    <b>{item.title}</b>
+                                </p>
+                                <p className="productElement">
+                                    <b>${item.price}</b>
+                                </p>
                             </div>
+                            <button className='deleteProductButton'
+                                onClick={() => setDialog({ 
+                                    message: "Delete Product?", 
+                                    isLoading: true, 
+                                    args: { itemId: item.id, publicId: item.publicId}
+                                 })}
+                            >
+                                Delete
+                            </button>
+
                         </div>)
                 })}
 
@@ -82,6 +71,6 @@ function Profile(props) {
             {dialog.isLoading && <Dialog message={dialog.message} setDialog={setDialog} onConfirm={() => deleteProduct(dialog.args.itemId, dialog.args.publicId)} />}
         </div>
     )
-}
+};
 
 export default Profile;

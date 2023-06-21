@@ -19,15 +19,12 @@ function AddProduct(props) {
     const [publicId, setPublicId] = useState("");
     const [spin, setSpin] = useState(false);
 
-
-
     useEffect(() => {
         if (!props.url) return; //if don't use this condition, the value of url will be set up equal "" right away after 
         //render the page, because the statement (const [url, setUrl] = useState('') ) It will trigger useEffect and sending 
         //post request to the server with the image: ""; So, we need prevent the setting up the url="" initially
         axios.post("http://localhost:3001/products", { imageUrl: props.url, publicId: publicId, title: title, price: price }).then((response) => {
-            console.log("response77777777777777777777777777", response);
-
+            //console.log("response", response);
             navigate("/profile")
 
         }).catch(error => {
@@ -41,8 +38,7 @@ function AddProduct(props) {
         formData.append("file", imageSelected);
         formData.append("upload_preset", "kysjntpy");
 
-        setSpin(true)
-
+        setSpin(true);
         //console.log(formData.get('file'))
 
         //make request to upload an image to the cloudinary.com
@@ -55,9 +51,7 @@ function AddProduct(props) {
             console.log("response.data", response.data);
             //console.log("formData", formData)
             props.setUrl(response.data.url);
-            setPublicId(response.data.public_id)
-            
-
+            setPublicId(response.data.public_id);
         })
 
         //make request to download and show in the page the image from the cloudinary.com
@@ -67,9 +61,7 @@ function AddProduct(props) {
 
     return (
         <div className="newProduct">
-
             <div className="newProductForm">
-
                 <div className="thumbnailPictureForm">
 
                     <img
@@ -94,7 +86,6 @@ function AddProduct(props) {
                     ref={inputFile}
                     onChange={(event) => {
                         setImageSelected(event.target.files[0]);
-
                     }}
                 />
 
@@ -111,11 +102,10 @@ function AddProduct(props) {
                         /> : "Add Product"}
                         
                 </button>
-
             </div>
         </div>
     );
-}
+};
 
 
 
