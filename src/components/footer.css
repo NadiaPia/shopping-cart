@@ -1,0 +1,46 @@
+.footer {
+    width: 100%;    
+    background-color: rgb(93, 93, 95); 
+    /* background-color: rgb(136, 164, 124); */
+    /* background-color: rgb(97, 118, 75); */   
+    
+    margin: 0;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;    
+    bottom: 0;
+    height: 4rem;    
+  }
+
+  .copyright {    
+    margin-right: 20px;
+  }
+
+  .contucts {
+    
+    display: flex;
+    align-items: center;
+  }
+
+  h5 {
+    color: white;
+    margin: 0.1rem;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 1.25;
+    margin-bottom: 0;
+    /* margin-right: 3em; */
+  }
+
+  .contactIcon {
+    width: 1.1em;
+    margin-left: 10px;
+    filter: invert(98%) sepia(2%) saturate(584%) hue-rotate(70deg) brightness(111%) contrast(82%);
+
+  }
+
+  .contactIcon:hover {
+    filter: invert(48%) sepia(34%) saturate(3280%) hue-rotate(160deg) brightness(93%) contrast(101%);
+  }
+  

@@ -1,6 +1,8 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
+
 import Shop from "./pages/shop/shop";
 //import Cart from "./pages/cart/cart";
 import CartTest from "./pages/cart/cart-test";
@@ -160,6 +162,10 @@ function App() {
           <Route path="/completion" element={<Completion />} />
 
         </Routes>
+
+        <Footer
+          
+        />
 
       </ShopContextProvider>
     </div>

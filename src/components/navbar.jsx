@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from "phosphor-react";
 import { MagnifyingGlass } from "phosphor-react";
@@ -29,7 +29,6 @@ function Navbar(props) {
       }
     })
   };
-
 
   return (
     <div className="navbar">
