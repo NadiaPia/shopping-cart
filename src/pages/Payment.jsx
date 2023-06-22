@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from 'axios';
-
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
@@ -12,17 +11,15 @@ function Payment() {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/payment/config").then((r) => {
-        console.log("r", r)
+    axios.get(`http://${window.location.hostname}:3001/payment/config`).then((r) => {
     const { publishableKey } = r.data;
-    console.log("publishableKeypublishableKey", publishableKey)
-      
+    //console.log("publishableKey", publishableKey)      
       setStripePromise(loadStripe(publishableKey));
     });
   }, []);
 
   useEffect(() => {
-    axios.post("http://localhost:3001/payment/create-payment-intent", {
+    axios.post(`http://${window.location.hostname}:3001/payment/create-payment-intent`, {
       method: "POST",
       body: JSON.stringify({}),
     }).then((result) => {
@@ -40,6 +37,6 @@ function Payment() {
       )}
     </div>
   );
-}
+};
 
 export default Payment;

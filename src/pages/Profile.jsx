@@ -8,24 +8,23 @@ import Dialog from "./Dialog";
 function Profile(props) {
 
     const [profleProducts, setProfileProducts] = useState([]);
-    const [dialog, setDialog] = useState({ message: "", isLoading: false, args: null })
-
+    const [dialog, setDialog] = useState({ message: "", isLoading: false, args: null });
     const getAllProfileProducts = () => {
-        axios.get("http://localhost:3001/profile").then((response) => {
-            console.log("response.data", response.data)
+        axios.get(`http://${window.location.hostname}:3001/profile`).then((response) => {            
             setProfileProducts(response.data);
             setDialog({ message: "", isLoading: false, args: null });
         })
     };
 
     useEffect(() => {
-        getAllProfileProducts()
+        getAllProfileProducts();
     }, []);
 
     const deleteProduct = (id, publicId) => {
         //console.log("props.product.public_id", item.publicId)
-        axios.delete(`http://localhost:3001/products/${id}`, { headers: { publicId: publicId } }).then((response) => {
-            console.log("response", response);
+        axios.delete(`http://${window.location.hostname}:3001/products/${id}`, { 
+            headers: { publicId: publicId }
+         }).then((response) => {           
             getAllProfileProducts();
             props.refreshCurrentCart();
         });

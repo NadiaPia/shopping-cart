@@ -35,8 +35,7 @@ body {
   align-items: center;
   flex-direction: column;
   width: 100%;  
-  padding-top: 100px;
-  /*background-color: aqua;*/
+  padding-top: 100px; 
 }
 
 @media screen and (max-width: 624px) {
@@ -72,9 +71,7 @@ body {
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 15px;
-
 }
-
 
 .deleteProductButton:hover {
   background-color: red;

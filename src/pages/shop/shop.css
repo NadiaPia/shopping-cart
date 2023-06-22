@@ -1,6 +1,5 @@
 .shop {  
-  width: 100%;
-  
+  width: 100%;  
 }
 .products {
   width: 100%;
@@ -63,10 +62,7 @@
   color: grey;
 }
 
-.product img {
-  /*width: 300px;*/
-  /* width: 25vw;
-  height: 33vh; */
+.product img {  
   width: 80%;
   height: 70%;
   margin-top: 1%;  

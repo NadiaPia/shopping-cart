@@ -10,12 +10,9 @@ function NoResultsFound() {
       </svg>
 
       <h1>No Results Found...</h1>
-      
-      
 
-      
     </div>
   )
-}
+};
 
 export default NoResultsFound;

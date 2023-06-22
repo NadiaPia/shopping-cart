@@ -1,8 +1,6 @@
 import React from 'react';
 import './Dialog.css';
 
-
-
 function Dialog(props) {
     const { message, onConfirm, setDialog } = props;
   return (
@@ -17,6 +15,6 @@ function Dialog(props) {
       </div>
     </div>
   )
-}
+};
 
-export default Dialog
+export default Dialog;

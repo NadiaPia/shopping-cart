@@ -14,16 +14,15 @@ function Login(props) {
 
   // axios.get('/logout', { withCredentials: true })
   const login = () => {
-    axios.post("http://localhost:3001/auth/login", { username: username, password: password }).then((response) => {
-      console.log("response.data after login request", response.data);
+    axios.post(`http://${window.location.hostname}:3001/auth/login`, { 
+      username: username, 
+      password: password
+     }).then((response) => {      
       props.setAuthState({ username: response.data.username, id: response.data.id, status: true });
       setUsername("");
       setPassword("");
       navigate("/");
-
-
-    }).catch(error => {
-      //console.log("error", error.response.data);
+    }).catch(error => {      
       alert(error.response.data)
     });
   };
@@ -34,7 +33,6 @@ function Login(props) {
       <input type="text" placeholder="Username..." value={username} onChange={(event) => { setUsername(event.target.value) }} />
       <input type="password" placeholder="Password..." value={password} onChange={(event) => { setPassword(event.target.value) }} />
       <button className="regAndLogButton" onClick={login}>Login</button>
-
     </div>
   )
 }

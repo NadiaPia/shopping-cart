@@ -9,12 +9,15 @@ function Registration(props) {
   const navigate = useNavigate();
 
   const register = () => {
-    axios.post("http://localhost:3001/auth", {
+    axios.post(`http://${window.location.hostname}:3001/auth`, {
     username: usernameReg,
     password: passwordReg
-  }).then((response) => {
-    console.log(response.data);
-    props.setAuthState({username: response.data.username, id: response.data.id, status: true});     
+  }).then((response) => {    
+    props.setAuthState({
+      username: response.data.username, 
+      id: response.data.id, 
+      status: true
+    });     
 
     setUsernameReg("");
     setPasswordReg("");

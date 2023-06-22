@@ -1,17 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ShopContext } from '../context/shop-context';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import addImg from "../assets/add_img.png";
 import statusImg from "../assets/status.png";
 import './add-product.css';
 
-
-
 function AddProduct(props) {
 
     const inputFile = useRef(null);
-
     const navigate = useNavigate();
     const [imageSelected, setImageSelected] = useState();
     const [title, setTitle] = useState("");
@@ -23,14 +19,17 @@ function AddProduct(props) {
         if (!props.url) return; //if don't use this condition, the value of url will be set up equal "" right away after 
         //render the page, because the statement (const [url, setUrl] = useState('') ) It will trigger useEffect and sending 
         //post request to the server with the image: ""; So, we need prevent the setting up the url="" initially
-        axios.post("http://localhost:3001/products", { imageUrl: props.url, publicId: publicId, title: title, price: price }).then((response) => {
-            //console.log("response", response);
+        axios.post(`http://${window.location.hostname}:3001/products`, { 
+            imageUrl: props.url, 
+            publicId: publicId, 
+            title: title, 
+            price: price
+         }).then((response) => {            
             navigate("/profile")
-
         }).catch(error => {
-            console.log("errorrrrrr", error)
+            console.log("error", error)
         });
-    }, [props.url])
+    }, [props.url]);
 
     const uploadImage = (files) => {
         //console.log("files[0]", files[0]) //FileList {0: File, length: 1}
@@ -42,17 +41,16 @@ function AddProduct(props) {
         //console.log(formData.get('file'))
 
         //make request to upload an image to the cloudinary.com
-
         axios.post("https://api.cloudinary.com/v1_1/dhq7myqzj/image/upload", formData, { withCredentials: false }).then((response) => {
             // by adding {withCredentials: false} we get rid off the all cookies that are sending by default according the 
             //axios.defaults.withCredentials...because Cloudinary don't wait any extra info
 
-            console.log("response.data.url", response.data.url);
-            console.log("response.data", response.data);
+            //console.log("response.data.url", response.data.url);
+            //console.log("response.data", response.data);
             //console.log("formData", formData)
             props.setUrl(response.data.url);
             setPublicId(response.data.public_id);
-        })
+        });
 
         //make request to download and show in the page the image from the cloudinary.com
         //1. npm i cloudinary-react;

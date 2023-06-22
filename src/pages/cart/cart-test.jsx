@@ -4,17 +4,14 @@ import CartProduct from "./cart-product";
 import "./cart.css";
 import { useNavigate } from "react-router-dom";
 
-
-
-
 function CartTest(props) {
 
   const [cartProducts, setCartProducts] = useState([]); 
   const [subtotal, setSubtotal] = useState(0);
   const navigate = useNavigate();
 
-  const getCartProducts = () => axios.get("http://localhost:3001/carts").then((response) => {
-    console.log("response.data", response.data);   
+  const getCartProducts = () => axios.get(`http://${window.location.hostname}:3001/carts`).then((response) => {
+    //console.log("response.data", response.data);   
     setCartProducts(response.data);
   })
 
@@ -22,7 +19,7 @@ function CartTest(props) {
     getCartProducts()
   }, [])
 
-console.log(cartProducts)
+//console.log(cartProducts)
   return (
     <div className="cartContainer">
       <div className='cart'>
@@ -48,6 +45,6 @@ console.log(cartProducts)
       </div>
     </div>
   )
-}
+};
 
-export default CartTest
+export default CartTest;
