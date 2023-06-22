@@ -14,7 +14,7 @@ function Login(props) {
 
   // axios.get('/logout', { withCredentials: true })
   const login = () => {
-    axios.post(`http://${window.location.hostname}:3001/auth/login`, { 
+    axios.post(`https://fullstack-pavel.herokuapp.com/auth/login`, { 
       username: username, 
       password: password
      }).then((response) => {      

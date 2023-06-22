@@ -12,14 +12,14 @@ useEffect(() => {
 
     //console.log("props.authState.id", props.authState.id)
     quantity < 1 ? (
-      axios.post(`http://${window.location.hostname}:3001/carts/${id}`, { userId: props.authState.id, quantity: 1 }).then((response) => {
+      axios.post(`https://fullstack-pavel.herokuapp.com/carts/${id}`, { userId: props.authState.id, quantity: 1 }).then((response) => {
         //I set up  quantity: 1 in the request body as a post request is doing before we increased the quantity, so, I do it manualy
         //console.log("Add to cart button is clicked once")        
         setQuantity((prev) => prev + 1);
         props.setCartQuantity((prev) => prev + 1);
       })
     ) : (
-      axios.put(`http://${window.location.hostname}:3001/carts/${id}`, { userId: props.authState.id, quantity: quantity + 1 }).then((response) => {
+      axios.put(`https://fullstack-pavel.herokuapp.com/carts/${id}`, { userId: props.authState.id, quantity: quantity + 1 }).then((response) => {
         //console.log("Add to cart button is clicked more then once");        
         setQuantity((prev) => prev + 1);
         props.setCartQuantity((prev) => prev + 1);

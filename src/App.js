@@ -29,13 +29,13 @@ function App() {
   const [initialQuantity, setInitialQuantity] = useState(null);
 
 
-  const getAllProducts = () => axios.get(`http://${window.location.hostname}:3001/products`).then((response) => {
+  const getAllProducts = () => axios.get(`https://fullstack-pavel.herokuapp.com/products`).then((response) => {
     //console.log("respose.data", response.data); //{id:4, imageUrl: "http://...", title:...}
     setProducts(response.data.reverse())
   });
 
   const refreshCurrentCart = () => {
-    axios.get(`http://${window.location.hostname}:3001/carts`).then((response) => {
+    axios.get(`https://fullstack-pavel.herokuapp.com/carts`).then((response) => {
       let totalQuantity = 0;
       const obj = {};
       response.data.map((el) => {
@@ -57,7 +57,7 @@ function App() {
 
   useEffect(() => {
     if (window.location.pathname === "/completion") {
-      axios.delete(`http://${window.location.hostname}:3001/carts/clearCart`).then((response) => {
+      axios.delete(`https://fullstack-pavel.herokuapp.com/carts/clearCart`).then((response) => {
         setCartQuantity(0);        
       }).catch((err) => {
         console.log(err);
@@ -67,7 +67,7 @@ function App() {
 
 
   useEffect(() => {
-    axios.get(`http://${window.location.hostname}:3001/auth/login`).then((response) => {
+    axios.get(`https://fullstack-pavel.herokuapp.com/auth/login`).then((response) => {
       //console.log("response.data", response.data); //{username: 'pavel', id: 54, iat: 1684998132}
       setAuthState({ 
         username: response.data.username, 
@@ -89,7 +89,7 @@ function App() {
   }, [authState.status]);
 
   const filterItem = () => {
-    axios.get(`http://${window.location.hostname}:3001/products/filter`, { headers: { "searchItem": searchItem.toLowerCase() } }).then((response) => {
+    axios.get(`https://fullstack-pavel.herokuapp.com/products/filter`, { headers: { "searchItem": searchItem.toLowerCase() } }).then((response) => {
       //console.log("response.data", response.data.length);
       if (response.data.length < 1) {
         navigate("/not-found");

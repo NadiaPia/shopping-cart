@@ -10,7 +10,7 @@ function CartTest(props) {
   const [subtotal, setSubtotal] = useState(0);
   const navigate = useNavigate();
 
-  const getCartProducts = () => axios.get(`http://${window.location.hostname}:3001/carts`).then((response) => {
+  const getCartProducts = () => axios.get(`https://fullstack-pavel.herokuapp.com/carts`).then((response) => {
     //console.log("response.data", response.data);   
     setCartProducts(response.data);
   })
