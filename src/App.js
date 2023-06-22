@@ -140,6 +140,7 @@ function App() {
               setInitialQuantity={setInitialQuantity}
               initialQuantity={initialQuantity}
               setCartQuantity={setCartQuantity}
+              refreshCurrentCart={refreshCurrentCart}
 
             />}
           />
@@ -162,11 +163,7 @@ function App() {
           <Route path="/completion" element={<Completion />} />
 
         </Routes>
-
-        <Footer
-          
-        />
-
+        <Footer/>
       </ShopContextProvider>
     </div>
   );

@@ -62,7 +62,7 @@ function AddProduct(props) {
     return (
         <div className="newProduct">
             <div className="newProductForm">
-                <div className="thumbnailPictureForm">
+                <div className={`thumbnailPictureForm ${imageSelected ? 'selectedImgForm' : ''}`}>
 
                     <img
                         className={imageSelected ? 'addedPicture' : 'addPicture'}

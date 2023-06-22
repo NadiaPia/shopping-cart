@@ -171,6 +171,8 @@ ul li:hover ul.dropdown {
   padding: 0px 10px;
   background-color: #FFF;
   border-radius: 10px;
+  
+  
   /*margin-right: 12em;*/
   
 }
@@ -190,6 +192,8 @@ ul li:hover ul.dropdown {
   border-radius: 10px;
   font-size: 18px;
   color: #424242; 
+  
+  
 }
 
 .search:focus {

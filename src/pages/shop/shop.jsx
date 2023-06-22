@@ -5,7 +5,9 @@ import './shop.css';
 function Shop(props) {  
 
   useEffect(() => {
-    props.getAllProducts()  }, []);  
+    props.getAllProducts();
+    props.refreshCurrentCart();
+    }, []);
 
   return (
     <div className='shop'>      

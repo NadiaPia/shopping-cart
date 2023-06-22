@@ -1,15 +1,15 @@
 .shop {  
   width: 100%;
+  
 }
-
-
 .products {
   width: 100%;
   height: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
-  margin-top: 90px; 
+  margin-top: 90px;
+  padding-bottom: 60px;  
 }
 
 @media screen and (max-width: 1080px) {

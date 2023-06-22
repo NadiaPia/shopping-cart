@@ -11,26 +11,34 @@
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
     text-decoration: none;
-    position: relative;
+    /* position: relative;  */
   
   }
   
   .thumbnailPicture {
-    width: 90%;
-    height: 90%;
+    width: 75%;
+    height: 75%;
+    margin-left: 10%;
     object-fit: scale-down;  
   }
   
   .addedPicture {  
-    position: absolute;
+    /* position: absolute;
     left:0;
-    top: 0;
-    width: 20%;  
+    top: 0; */
+    width: 15%;    
+    margin: 2.5% ;
+  }
+
+  .selectedImgForm {
+    justify-content: flex-start;
+    align-items: flex-start;
   }
   
   .addPicture {
     position: absolute;
     width: 8vw;
+    
   } 
   
   .addPicture:hover {
@@ -43,6 +51,7 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    padding-bottom: 80px;
   }
   
   .newProductForm {    
