@@ -9,7 +9,7 @@ function CartProduct(props) {
         if (newQuantity === 0) {
             deleteFromCart();
         }
-        axios.put(`https://fullstack-pavel.herokuapp.com/carts/${id}`, {
+        axios.put(`http://localhost:3001/carts/${id}`, {
             userId: props.authState.id,
             quantity: newQuantity
         }).then((response) => {
@@ -22,7 +22,7 @@ function CartProduct(props) {
     });
 
     const deleteFromCart = () => {
-        axios.delete(`https://fullstack-pavel.herokuapp.com/carts/${props.cartProduct.id}`).then((response) => {
+        axios.delete(`http://localhost:3001/carts/${props.cartProduct.id}`).then((response) => {
             props.getCartProducts()
             //console.log(response)
         }).catch((error) => {

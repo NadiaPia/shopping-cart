@@ -9,7 +9,7 @@ function Registration(props) {
   const navigate = useNavigate();
 
   const register = () => {
-    axios.post(`https://fullstack-pavel.herokuapp.com/auth`, {
+    axios.post(`http://localhost:3001/auth`, {
     username: usernameReg,
     password: passwordReg
   }).then((response) => {    

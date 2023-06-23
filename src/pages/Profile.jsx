@@ -10,7 +10,7 @@ function Profile(props) {
     const [profleProducts, setProfileProducts] = useState([]);
     const [dialog, setDialog] = useState({ message: "", isLoading: false, args: null });
     const getAllProfileProducts = () => {
-        axios.get(`https://fullstack-pavel.herokuapp.com/profile`).then((response) => {            
+        axios.get(`http://localhost:3001/profile`).then((response) => {            
             setProfileProducts(response.data);
             setDialog({ message: "", isLoading: false, args: null });
         })
@@ -22,7 +22,7 @@ function Profile(props) {
 
     const deleteProduct = (id, publicId) => {
         //console.log("props.product.public_id", item.publicId)
-        axios.delete(`https://fullstack-pavel.herokuapp.com/products/${id}`, { 
+        axios.delete(`http://localhost:3001/products/${id}`, { 
             headers: { publicId: publicId }
          }).then((response) => {           
             getAllProfileProducts();
