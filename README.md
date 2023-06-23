@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Shopping-cart
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+"Shopping Cart" is a website where users can buy or sell a wide variety of items. Shopping-cart uses a data recieved from an API built with Node.JS and Express.JS. Take a look at the [API here!](https://github.com/NadiaPia/shopping-cart-api). The project also utilized technologies such as:
 
-In the project directory, you can run:
+- MySQL (sequelize) for the database
+- Cloudinary - digital asset for storing images
+- Stripe - for payment
+- JSON Web Token - user session management
 
-### `npm start`
+This project was deployed on the Firebase (FE) and Heroku (BE): [Link to deployed prject](https://shopping-hunter.web.app/).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- ### Guest users have access only to the list of all products and are able to use search bar.
+!["Unregistered users"](https://github.com/NadiaPia/shopping-cart/blob/master/src/assets/UnautirizedUser.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- ### A registered or logged-in user has complete access to all features and functionalities of the website.
+!["Registration and Login process"](https://github.com/NadiaPia/shopping-cart/blob/master/src/assets/RegLog.png)
 
-### `npm test`
+- ### A registered or logged-in user has complete access to all features and functionalities of the website.
+!["Registration and Login process"](https://github.com/NadiaPia/shopping-cart/blob/master/src/assets/RegLog.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ### An authorized user is greeted with their nickname and has the ability to add desired items to the shopping cart.
+!["Authorized user"](https://github.com/NadiaPia/shopping-cart/blob/master/src/assets/AutirizedUser.png)
 
-### `npm run build`
+- ### The search bar allows filtering of products by name.
+!["The search bar"](https://github.com/NadiaPia/shopping-cart/blob/master/src/assets/searchbar.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- ### In order to add or remove their own item, an authorized user needs to navigate to their profile.
+!["Profile"](https://github.com/NadiaPia/shopping-cart/blob/master/src/assets/gotoProfile.png)
+!["Add product"](https://github.com/NadiaPia/shopping-cart/blob/master/src/assets/addProduct.png)
+!["Delete product"](https://github.com/NadiaPia/shopping-cart/blob/master/src/assets/deleteProduct.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- ### When in the shopping cart, the user has the ability to adjust the quantity of items and proceed with the payment.
+!["Payment"](https://github.com/NadiaPia/shopping-cart/blob/master/src/assets/payment.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

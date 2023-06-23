@@ -11,7 +11,7 @@ function Payment() {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/payment/config`).then((r) => {
+    axios.get(`https://shopping-hunter-api.web.app/payment/config`).then((r) => {
     const { publishableKey } = r.data;
     //console.log("publishableKey", publishableKey)      
       setStripePromise(loadStripe(publishableKey));
@@ -19,7 +19,7 @@ function Payment() {
   }, []);
 
   useEffect(() => {
-    axios.post(`http://localhost:3001/payment/create-payment-intent`, {
+    axios.post(`https://shopping-hunter-api.web.app/payment/create-payment-intent`, {
       method: "POST",
       body: JSON.stringify({}),
     }).then((result) => {

@@ -17,7 +17,7 @@ function Navbar(props) {
 
 
   const logout = () => {
-    axios.get(`http://localhost:3001/auth/logout`).then((response) => {
+    axios.get(`https://shopping-hunter-api.web.app/auth/logout`).then((response) => {
       //console.log("response.data after logout request", response.data.message);
       if (response.data.message) {
         props.setAuthState({ username: "", id: 0, status: false });

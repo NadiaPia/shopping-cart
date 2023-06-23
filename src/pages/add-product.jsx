@@ -19,7 +19,7 @@ function AddProduct(props) {
         if (!props.url) return; //if don't use this condition, the value of url will be set up equal "" right away after 
         //render the page, because the statement (const [url, setUrl] = useState('') ) It will trigger useEffect and sending 
         //post request to the server with the image: ""; So, we need prevent the setting up the url="" initially
-        axios.post(`http://localhost:3001/products`, { 
+        axios.post(`https://shopping-hunter-api.web.app/products`, { 
             imageUrl: props.url, 
             publicId: publicId, 
             title: title, 
