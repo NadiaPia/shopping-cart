@@ -57,6 +57,10 @@ body {
   color: white;
 }
 
+.regAndLogButton:hover {
+  cursor: pointer;
+}
+
 .loginContainer input {
   border: 2px solid rgb(19, 19, 19);
   padding-left: 10px;

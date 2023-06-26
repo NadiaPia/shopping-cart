@@ -67,7 +67,7 @@
     border-radius: 8px;    
   }
   
-  .newProductForm button {
+  .addProductButton {
     width: 30%;
     height: 30px;
     margin: 10px;
@@ -76,6 +76,17 @@
     color: white;
     width: 200px;
     height: 50px;
+    cursor: pointer;
+  }
+
+  .addPrdBtnDisabled {
+    background-color: grey;
+    color: white;
+    cursor: default;
+  }
+
+  .disabledAddProductButton {
+    background-color: grey;
   }
   
   .chooseFile {

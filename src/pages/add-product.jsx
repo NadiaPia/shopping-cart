@@ -91,15 +91,23 @@ function AddProduct(props) {
 
                 <input type="text" placeholder='Price...' onChange={(event) => { setPrice(event.target.value) }} />
 
-                <button onClick={uploadImage}> 
+                
+                {/* {(title && price) ?  */}
+                <button 
+                    onClick={uploadImage} 
+                    className={`${"addProductButton"} ${!(title && price) ? 'addPrdBtnDisabled' : ''}`}
+                    disabled={!(title && price)}
+                > 
                                 
-                 {spin ? <img
-                            className="status-image"
-                            src={statusImg}  //pay attention to this address!!!!!
-                            alt="Loading"
-                        /> : "Add Product"}
-                        
+                                {spin ? <img
+                                           className="status-image"
+                                           src={statusImg}  //pay attention to this address!!!!!
+                                           alt="Loading"
+                                       /> : "Add Product"}
+                                       
                 </button>
+                                {/* // : <button disabled className="disabledAddProductButton"> Add Producttt </button>}  */}
+                
             </div>
         </div>
     );
