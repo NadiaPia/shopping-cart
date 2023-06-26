@@ -9,7 +9,7 @@ function CartProduct(props) {
         if (newQuantity === 0) {
             deleteFromCart();
         }
-        axios.put(`https://shopping-hunter-api.web.app/carts/${id}`, {
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/carts/${id}`, {
             userId: props.authState.id,
             quantity: newQuantity
         }).then((response) => {
@@ -22,7 +22,7 @@ function CartProduct(props) {
     });
 
     const deleteFromCart = () => {
-        axios.delete(`https://shopping-hunter-api.web.app/carts/${props.cartProduct.id}`).then((response) => {
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/carts/${props.cartProduct.id}`).then((response) => {
             props.getCartProducts()
             //console.log(response)
         }).catch((error) => {

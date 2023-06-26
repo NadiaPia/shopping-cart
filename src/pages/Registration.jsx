@@ -9,7 +9,7 @@ function Registration(props) {
   const navigate = useNavigate();
 
   const register = () => {
-    axios.post(`https://shopping-hunter-api.web.app/auth`, {
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth`, {
     username: usernameReg,
     password: passwordReg
   }).then((response) => {    

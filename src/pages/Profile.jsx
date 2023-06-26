@@ -10,7 +10,7 @@ function Profile(props) {
     const [profleProducts, setProfileProducts] = useState([]);
     const [dialog, setDialog] = useState({ message: "", isLoading: false, args: null });
     const getAllProfileProducts = () => {
-        axios.get(`https://shopping-hunter-api.web.app/profile`).then((response) => {            
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/profile`).then((response) => {            
             setProfileProducts(response.data);
             setDialog({ message: "", isLoading: false, args: null });
         })
@@ -22,7 +22,7 @@ function Profile(props) {
 
     const deleteProduct = (id, publicId) => {
         //console.log("props.product.public_id", item.publicId)
-        axios.delete(`https://shopping-hunter-api.web.app/products/${id}`, { 
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/products/${id}`, { 
             headers: { publicId: publicId }
          }).then((response) => {           
             getAllProfileProducts();

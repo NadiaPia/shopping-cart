@@ -14,7 +14,7 @@ function Login(props) {
 
   // axios.get('/logout', { withCredentials: true })
   const login = () => {
-    axios.post(`https://shopping-hunter-api.web.app/auth/login`, { 
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, { 
       username: username, 
       password: password
      }).then((response) => {      
