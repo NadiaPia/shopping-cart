@@ -36,10 +36,10 @@ function CartTest(props) {
         ))}
       </div>
       <div className="subtotalContainer">      
-      <p>Subtotal:<br/> $ {subtotal}</p>
+      <p className="subtotalNumber">Subtotal:<br/> $ {subtotal}</p>
       <div className="cartButtons">
-        <button className="ShopAndCheckout" onClick={() => navigate("/")}>Continue Shopping</button>
-        <button className="ShopAndCheckout" onClick={() => navigate("/payment")}>Checkout</button>
+        <button className="ShopAndCheckoutButtons" onClick={() => navigate("/")}>Continue Shopping</button>
+        <button className="ShopAndCheckoutButtons" onClick={() => navigate("/payment")}>Checkout</button>
 
       </div>
       </div>

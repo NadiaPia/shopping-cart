@@ -1,5 +1,6 @@
 .cartContainer {
   display: flex;  
+  padding-bottom: 70px;
 }
 
 .cart {
@@ -8,27 +9,36 @@
   justify-content: center;
   align-items: center;
   margin-top: 70px;  
-  width: 70%;
+  width: 70%;  
 }
 
-@media screen and (max-width: 624px) {
-  .cart {
-    margin-top: 150px; 
-  }
-}
-
-.subtotalContainer {  
+.subtotalContainer {
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   border-radius: 25px;
-  width: 30%;
+  width: 80%;
   margin-top: 200px;
-  height: 40%;
-  position:fixed;
-  right: 0;
-  top: 0;
   margin-right: 50px;
+  min-height: 40%;  
+  right: 0;
+  top: 0;  
   font-size: 1.7em;
   font-weight: bold;
+}
+
+.subtotalNumber {
+  margin-top: 15%px;
+  margin-bottom: 10%; 
+}
+
+.ShopAndCheckoutButtons {
+  width: 150px;
+  height: 50px;
+  background-color: rgb(19, 19, 19);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin: 10px;
+  cursor: pointer;
 }
 
 .cartItem { 
@@ -64,16 +74,6 @@
   justify-content: center;
 }
 
-.ShopAndCheckout {
-  width: 150px;
-  height: 50px;
-  background-color: rgb(19, 19, 19);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  margin: 10px;
-  cursor: pointer;
-}
 
 .cartProductButton {
   width: 35px;
@@ -87,13 +87,6 @@
   border: none;
   padding-bottom: 0px;
 }
-
-@media screen and (max-width: 624px) {
-  .cartProductButton {
-    font-size: 1.1em;
-  }
-}
-
 .cartItemDescription {
   font-size: 1.5vw;
   width: 60%; 
@@ -106,9 +99,45 @@
 }
 
 @media screen and (max-width: 624px) {
-  .cartItemDescription {
-    font-size: 1.4em;
+  .cartContainer {
+    align-items: center;
   }
+  .cart {    
+    width: 90%;
+    margin-top: 10px;
+  }
+  .cartProductButton {
+    font-size: 1.1em;
+  }
+  .subtotalNumber {
+    margin-bottom: 0;
+    margin-top: 3%;  
+  }
+  .cartItemDescription {
+    font-size: 1.4em;    
+  }
+  .cartItemDescription > p {
+    margin: 2px;
+  }
+  .cartContainer {
+    flex-direction:column-reverse;
+  }
+  .cartButtons {    
+    display: flex;
+    justify-content: center;    
+  }
+  .cartItem {
+    width: 90% ;
+  }
+  .subtotalContainer {
+    margin-right: 0;    
+  }
+}
+@media screen and (min-width: 624px) {  /* after 624px*/
+  .subtotalContainer {
+    position:fixed;
+    width: 30%;
+  }  
 }
 
 
