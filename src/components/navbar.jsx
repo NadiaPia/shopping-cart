@@ -58,7 +58,7 @@ function Navbar(props) {
       <ul className="greeting">
         <li>
           <div className="loggedInContainer">
-            <h2 className="menuItemLogin" > {username ? `Hello, ${username}` : ""} </h2>
+            <h2 className="menuItemLogin" > {username ? `Hello, ${username}` : ""} </h2>            
           </div>
 
           <ul className="dropdown">
@@ -68,8 +68,6 @@ function Navbar(props) {
         </li>
       </ul>
       )}
-
-
 
       <div className="links">
         {!props.authState.status ? (
@@ -82,7 +80,6 @@ function Navbar(props) {
         ) : (
           <>
             <Link className="navbarButton" to="/"> Shop </Link>
-
             <div className="shoppingCartImage">
             <Link className="shoppingCartIcon" to="/cart"> <ShoppingCart size={32} /> </Link>
             {props.cartQuantity && <p className="shoppingCartQuantity">{props.cartQuantity}</p>}

@@ -91,10 +91,12 @@
 .loggedInContainer {
   color: white;
   display: flex;
+  align-items: center;
   font-size: 10px;
   margin: 0;
-  height: 100%;  
+  height: 100%;   
 }
+
 
 ul {
   list-style: none;
