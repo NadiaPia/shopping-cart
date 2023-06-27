@@ -22,8 +22,9 @@ function Login(props) {
       setUsername("");
       setPassword("");
       navigate("/");
-    }).catch(error => {      
-      alert(error.response.data)
+    }).catch(error => {  
+      console.log("error", error)    
+      alert(error.response.data.error)
     });
   };
 

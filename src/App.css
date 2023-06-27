@@ -61,6 +61,12 @@ body {
   cursor: pointer;
 }
 
+.regAndLogButtonDisabled {
+  background-color: grey !important;
+
+
+}
+
 .loginContainer input {
   border: 2px solid rgb(19, 19, 19);
   padding-left: 10px;

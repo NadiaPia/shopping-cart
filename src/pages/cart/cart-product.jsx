@@ -4,7 +4,11 @@ import axios from "axios";
 function CartProduct(props) {
 
     const [quantity, setQuantity] = useState(props.cartProduct.quantity);
+    const [isLoading, setIsLoading] = useState(false);
     const changeQuantity = ((id, delta) => { // delta is the second argument might be 1 or -1
+
+        setIsLoading(true); //to make +/- buttons disabled untill response from server
+
         const newQuantity = quantity + delta;
         if (newQuantity === 0) {
             deleteFromCart();
@@ -15,6 +19,7 @@ function CartProduct(props) {
         }).then((response) => {
             //console.log("Add to cart button is clicked more then once");
             //console.log("response", response.data)
+            setIsLoading(false);
             setQuantity((prev) => newQuantity);
             props.setSubtotal(prev => prev + delta * props.cartProduct.Product.price);
             props.setCartQuantity((prev) => prev + delta);
@@ -47,9 +52,9 @@ function CartProduct(props) {
                     </p>
 
                     <div className='countHandler'>
-                        <button className='cartProductButton' onClick={() => changeQuantity(props.cartProduct.Product.id, -1)}> - </button>
+                        <button className='cartProductButton' disabled={isLoading} onClick={() => changeQuantity(props.cartProduct.Product.id, -1)}> - </button>
                         <input value={quantity} />
-                        <button className='cartProductButton' onClick={() => changeQuantity(props.cartProduct.Product.id, 1)}> + </button>
+                        <button className='cartProductButton' disabled={isLoading} onClick={() => changeQuantity(props.cartProduct.Product.id, 1)}> + </button>
                     </div>
                 </div>
             </div>

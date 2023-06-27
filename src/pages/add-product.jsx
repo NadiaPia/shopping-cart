@@ -87,7 +87,7 @@ function AddProduct(props) {
                     }}
                 />
 
-                <input type="text" placeholder='Title...' onChange={(event) => { setTitle(event.target.value) }} />
+                <input type="text" maxlength="36" placeholder='Title...' onChange={(event) => { setTitle(event.target.value) }} />
 
                 <input type="text" placeholder='Price...' onChange={(event) => { setPrice(event.target.value) }} />
 

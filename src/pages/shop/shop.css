@@ -11,6 +11,18 @@
   padding-bottom: 60px;  
 }
 
+.status-image-shop {    
+  animation: rotate 1s linear infinite;
+  height: 85%;
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 @media screen and (max-width: 1080px) {
   .products {
     grid-template-columns: 1fr 1fr;
@@ -95,4 +107,7 @@
   cursor: pointer;
 }
 
+.addToCartBtnDisabled {
+  color: grey;
+}
 

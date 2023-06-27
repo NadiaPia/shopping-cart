@@ -6,10 +6,9 @@
     flex-direction: column;
     font-family: 'Raleway';
     align-items: center;
-    font-size: 1.2em;
-    padding: 20px;    
-    padding-top: 10em;
-    background-color: aqua;
+    font-size: 1.2em;    
+    padding-top: 7em;
+    padding-bottom: 80px;
 }
 
 .paymentContainer h1 {
@@ -24,15 +23,12 @@ form > * {
 }
 
 .payment-form {
-    width: 480px; 
-    background-color: yellowgreen;
-    
+    width: 480px;     
 }
 
 @media screen and (max-width: 531px) {
   .payment-form {
-    width: 280px; 
-    background-color: yellowgreen;
+    width: 280px;     
 }
 
 }

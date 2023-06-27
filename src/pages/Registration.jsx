@@ -23,7 +23,8 @@ function Registration(props) {
       setPasswordReg("");
       navigate("/");
     }).catch(error => {
-      console.log(error);
+      console.log("error.response.data.error.errors[0].message", error.response.data.error.errors[0].message);
+      alert("This name is already in use. Please, choose another name.");
     });
   }
 
@@ -33,14 +34,13 @@ function Registration(props) {
       <input type="text" placeholder="Username" value={usernameReg} onChange={(e) => { setUsernameReg(e.target.value); }} />
       <input type="text" placeholder="Password" value={passwordReg} onChange={(e) => { setPasswordReg(e.target.value); }} />
 
-      {(usernameReg && passwordReg) ?
-        <button className="regAndLogButton" onClick={register}>
-          Register
-        </button> 
-        :
-        <button className="regAndLogButton" disabled onClick={register}>
-          Register
-        </button>}
+      <button
+        className={`${"regAndLogButton"} ${!(usernameReg && passwordReg) ? "regAndLogButtonDisabled" : ""}`}
+        onClick={register}
+        disabled={!(usernameReg && passwordReg)}
+      >
+        Register
+      </button>
     </div>
   )
 }
