@@ -95,8 +95,8 @@ function AddProduct(props) {
                 {/* {(title && price) ?  */}
                 <button 
                     onClick={uploadImage} 
-                    className={`${"addProductButton"} ${!(title && price) ? 'addPrdBtnDisabled' : ''}`}
-                    disabled={!(title && price)}
+                    className={`${"addProductButton"} ${!(imageSelected && title && price) ? 'addPrdBtnDisabled' : ''}`}
+                    disabled={!(imageSelected && title && price)}
                 > 
                                 
                                 {spin ? <img
