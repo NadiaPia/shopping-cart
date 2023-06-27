@@ -22,7 +22,7 @@ function Navbar(props) {
       if (response.data.message) {
         props.setAuthState({ username: "", id: 0, status: false });
 
-        console.log("props.authState.status", props.authState.status);
+        // console.log("props.authState.status", props.authState.status);
         props.setInitialQuantity({});
         props.setCartQuantity(0);
         navigate("/")

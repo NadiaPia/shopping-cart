@@ -23,7 +23,7 @@ function Registration(props) {
       setPasswordReg("");
       navigate("/");
     }).catch(error => {
-      console.log("error.response.data.error.errors[0].message", error.response.data.error.errors[0].message);
+      // console.log("error.response.data.error.errors[0].message", error.response.data.error.errors[0].message);
       alert("This name is already in use. Please, choose another name.");
     });
   }

@@ -23,8 +23,8 @@ function Login(props) {
       setPassword("");
       navigate("/");
     }).catch(error => {  
-      console.log("error", error)    
-      alert(error.response.data.error)
+      //console.log("error", error)    
+      alert(error?.response?.data?.error || error?.response?.data)
     });
   };
 

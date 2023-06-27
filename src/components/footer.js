@@ -14,7 +14,7 @@ function Footer() {
             <div className="copyright">
             <h5>
                 &copy; {new Date().getFullYear()}
-                <span> COMPANY NAME </span>
+                <span> SHOPPING-HUNTER </span>
             </h5>
             </div>
 
