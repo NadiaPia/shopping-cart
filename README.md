@@ -34,6 +34,7 @@ This project was deployed on the Firebase (FE) and Heroku (BE): [Link to deploye
 - ### When in the shopping cart, the user has the ability to adjust the quantity of items and proceed with the payment.
 !["Payment"](https://github.com/NadiaPia/shopping-cart/blob/master/src/assets/payment.png)
 
+To start a project: run npm install and then npm start.
 
 
 
